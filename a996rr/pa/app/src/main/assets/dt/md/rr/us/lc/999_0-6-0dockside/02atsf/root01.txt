@@ -1,0 +1,34 @@
+
+<model="0-6-0 H.K.Porter Dockside Switcher" yearFrom=1917 loco/>
+
+<include="/dt/mt/materials.txt" />
+
+<color_as=frame uColor=#404048 />
+<mt_save_as=frame mt_use=metal uColor_use=frame />
+
+<color_as=body uColor_use=frame />
+<mt_save_as=body mt_use=teflon uColor_use=body />
+
+<color_as=wheels-color uColor_use=body />
+<mt_save_as=wheel_main mt_use=metal uColor_use=wheels-color />
+<mt_save_as=rim_wall mt_use=wheel_main />
+
+<color_as=handles uColor_use=chrome />
+<mt_save_as=handles mt_use=metal-wire uColor_use=handles lineWidth=0.3 />
+
+<color_as=gear uColor_use=rust />
+<mt_save_as=gear mt_use=rust />
+
+<mt_save_as=local-chrome mt_use=frame />
+<mt_save_as=bell mt_use=rust />
+
+
+<include='../root00.txt' />
+
+
+<for_element=cabin>
+	//AT&SF
+	<mt_use=satin uColor=#ffffee uTex1mask_src='atsf01.bmp' uTex1alphaChannelN=0 uAlphaFactor=0.9 uAmbient=0.5 sticker />
+	<a2mesh wh='8,3' xywh_GL='0,0,1,1' all markedAs=cabin-front onThe=right detachBy=0.05 px=11 py=15.2 />
+	<a2mesh wh='8,3' xywh_GL='0,0,1,1' all markedAs=cabin-front onThe=left detachBy=0.05 px=-11 py=15.3 />	
+</for_element>

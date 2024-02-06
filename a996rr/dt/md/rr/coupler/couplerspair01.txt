@@ -1,0 +1,80 @@
+<texture_as=tx2coupler src='coupler01.bmp' ckey=#00ff00 />
+<mt_save_as=coupler mt_use=rust uTex2nm_use=tx2coupler />
+
+<group> //1 coupler
+	<mt_use=coupler />
+	<group> //coupler itself
+		<group>//body
+			<vs=box whl='3,3,1' sectZ=2 />
+			<a='back' -nm />
+			<a='left' mark=left />
+			<a='right' mark=right />
+			<a='front' xywh2nm='8.5,0,0,6' />
+			<a='top' mark=top />
+			<do pz=-1 applyTo='back only' />
+			<do scale='0.5,0.5,1' applyTo='back only' />		
+		</group align=front >//body
+		<group>//left/empty lip
+			<vs=box whl='0.8,3,0.8' />
+			<a='front' mt_use=coupler />
+			<a='left' xywh2nm='8.5,0,0,6' />
+			<a='right' mark=right />
+			<a='top' mark=top />
+			<do px=0.6 applyTo='front only' toX=0 />
+		</group align=back px=1.1 >//right/empty lip
+		<group>//right lip with lock
+			<vs=box whl='0.8,3,2' />
+			<a='right' xywh2nm='8.5,0,0,6' />
+			<a='front,left' mark=left />
+			<a='top' mark=top />
+			<do pz=-0.8 applyTo='front only' toX=0 />
+		</group align=back px=-1.1 >//right lip with lock
+		
+		<mt_use=coupler />//just for tex sizes reference
+		<a2group=right markedAs='right' xywh2nm='14,0,12,9' />
+		<a2group=top markedAs='top' xywh2nm='0,8,12,16' flip2nm=180 />
+		<a2group=left markedAs='left' xywh2nm='9,0,5,8' />
+
+		
+		<do='calc merge normals' />
+		
+		<group> //lock tonque
+			<mt_use=coupler -nm />
+			<group>//tonque itself
+				<vs=box whl='1,1.5,0.8' />
+				<a='top,front,back,left' />
+				<vs=cylinder whl='0.8,0.8,1.5' />
+				<a='wrap,front' headZto='0,1,0' sectR=3 angleFromTo='-90,90' px=0.5 />
+				<do px=0.5 applyTo='front only' toX=0 />
+				<do='calc merge normals' />
+			</group px=0.5 pz=0.5 >//tonque itself
+			/*
+			<group>//left bar
+				<vs=box whl='0.5,1,1.2' />
+				<a='top,right' />
+			</group align=left px=-0.25 pz=-0.5 >//left bar
+			<group>//back bar
+				<vs=box whl='1.5,1,0.5' />
+				<a='top,front,right' />
+			</group align='left,front' px=0 pz=-1 >//back bar
+			*/
+		</group px=-1 pz=1 ay=0> //lock tonque
+
+	</group scale=1.3 >
+
+		
+</group align=front pz=1.1 py=0.1>//coupler
+<clone ay=180 py=-0.2/>
+	
+<group>//wire
+	<line mt_use=coupler -nm mt_type=wire lineWidth=0.4 >
+		<ring whl="9,9,0" sectR=8 angleFromTo='-180,0'/>
+	</line>
+</group ay=90 >
+
+<element name=couplersshaft >
+	//axis/shaft
+	<mt_use=coupler -nm/>
+	<vs=box whl='1.3,1.3,1' />
+	<a='top,left,right' />
+</element>

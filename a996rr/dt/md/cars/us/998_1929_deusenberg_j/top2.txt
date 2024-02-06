@@ -1,0 +1,29 @@
+
+<elementProps opaque />
+<include="top1.txt" />
+
+<mt_use="car-roof" uTex2nm_use="tx1" />
+
+	<group > //front top
+		<vs="box_tank" whl="18.6,0,14.5" extX=1 extU=1 extF=0.5 sectR=2 /> //side=",under_side" />
+		<a="top all" mark="roof-top-front" xywh2nm="1.5,19.5,1,7" align='back' />
+
+		<do scaleTo="18,0.5,x" py=-0.5 applyTo="front" />
+
+		<do="calc normals" />
+		<do="merge normals" />
+
+		<mt_use="car-roof" mt_type="wire" lineWidth=0.3 uSpecularIntencity=0 noShadow uAlphaFactor=0.5 />
+		//roof stitches
+		<group>
+			<line>
+				<p pxyz="-9,-9,0" />
+				<p py=18 dx=0.7 />
+			</line>
+			<line2mesh all markedAs="roof-top-front" onThe="top" detachBy=0.1 />
+		</group>
+		<clone=reflect xyz="1,0,0" />
+
+	</group py=4.8 pz=15.5 >
+	
+	

@@ -1,0 +1,23 @@
+<color_as=window uColor_use=cabin/>
+<mt_save_as=window mt_use=cabin uColor_use=window/>
+
+
+<mt_use=door>
+	<box='0.3,4,4 />
+	<group>
+		<mt_use=window rmt_type=wire lineWidth=0.4 noShadow/>
+		<short p0='0,0,-2' dz=4/> //bottom
+		<short dy=4/> //left
+		<short dz=-4/> //top
+		<short dy=-4/> //right
+		//mid cross
+		<mt_use=window rmt_type=wire lineWidth=0.2 noShadow/>
+		<short p0='0,2,-2' dz=4/> //horizontal
+		<short p0='0,0,0' dy=4/> //vertical
+
+		<for_element=glass>
+			<mt_use=glass-plain uAlphaFactor=0.6 />
+			<a=left side=in align=bottom />			
+		</for_element>
+	</group align=left dx=0.1>//sizeD='0,-0.6,0'>//-0.6'>
+</mt_use>

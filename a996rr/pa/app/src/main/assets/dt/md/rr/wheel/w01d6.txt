@@ -1,0 +1,24 @@
+<include='/dt/mt/materials.txt'/>
+
+
+<mt_save_as=rim mt_use=chrome />
+<mt_save_as="rim-wire" mt_use="metal-wire" lineWidth=1 uColor_use=chrome />
+
+<color_as=wheels-color uColor_use=chrome />
+<mt_save_as=wheel_main mt_use=rim />
+
+<texture_as=wheel_tx2nm src='/dt/md/rr/wheel/wheel01.bmp' >//ckey="#00ff00"/>
+
+<mt_save_as=rim_wall mt_use=wheel_main uTex2nm_use=wheel_tx2nm/>
+//<mt_save_as=wheel_wire mt_use=metal-wire uColor_use=wheels-color lineWidth=0.4 />
+
+<classProps spokesN=0 wheelRadius=3 />
+	
+<buildWheelPair=rims radius=3 rimWall=3 xywh2nm_GL='0,0,1,1' /> //noAxis noBack
+
+/*
+<mt_type=wire uColor=#ffff00 lineWidth=0.3/>
+<short p0='-15,0,0' dx=30/>
+*/
+
+

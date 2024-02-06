@@ -1,0 +1,5 @@
+
+<mt_use=metal-wire uColor_use=body lineWidth=0.2 />
+<short p0='0,0,0' py=-3 />
+
+<element=bell00.txt class=bell />

@@ -1,0 +1,44 @@
+
+<color_as="ink-dark" uColor="#220033" scope=app />
+<color_as="car-ink" uColor="#330033" scope=app />
+<color_as="ink-maroon-dark" uColor="#220018" scope=app />
+<color_as="ink-maroon" uColor="#660033" scope=app />
+<color_as="baby-green" uColor="#39E0B4" scope=app />
+<color_as="baby-blue" uColor="#55F8FF" scope=app /> //0CFEFF
+<color_as="baby-pink" uColor="#ee7799" scope=app />
+<color_as="ivory" uColor="#c0bbaa" scope=app />
+<color_as="tbird-gray" uColor="#223344" scope=app />
+//<color_as="d-blue" uColor="#001133" scope=app /> //001844
+//<color_as="l-blue" uColor="#55ccee" scope=app /> //
+<color_as="l-denim" uColor="#607788" scope=app /> //7799aa 668899
+<color_as="m-denim" uColor="#001133" scope=app /> //002266
+<color_as="d-denim" uColor="#00071f" scope=app /> //001133
+
+<color_as="l-gray-b" uColor="#c0c0cf" scope=app />
+<color_as="m-gray-b" uColor="#80808f" scope=app />
+<color_as="d-gray-b" uColor="#40404f" scope=app />
+
+<color_as="m-gray-r" uColor="#8f8080" scope=app />
+<color_as="m-gray-c" uColor="#808888" scope=app />
+<color_as="m-gray-m" uColor="#888088" scope=app />
+
+<color_as="d-gray-r" uColor="#5f5050" scope=app />
+<color_as="d-gray-c" uColor="#505858" scope=app />
+<color_as="d-gray-m" uColor="#585058" scope=app />
+
+<color_as="white-r" uColor="#b8b0b0" scope=app />
+<color_as="white-b" uColor="#b0b0b8" scope=app />
+<color_as="white-y" uColor="#b8b8b0" scope=app />
+
+<color_as="milk-coffee" uColor="#776666" scope=app />
+<color_as="cream" uColor="#bb9988" scope=app />
+<color_as="yellow-lemon" uColor="#f0ffaa" scope=app /> //f6ff99
+<color_as="yellow-orange" uColor="#ffd828" scope=app /> //ffe020  //
+
+<color_as="car-black" uColor="#070409" scope=app />
+<color_as="car-brown" uColor="#331108" scope=app /> //442211 331608
+<color_as="car-red" uColor="#990020" scope=app />
+
+
+<color_as="chrome" valueOf="#666666" scope=app />
+<color_as="gold" valueOf="#825A00" scope=app />

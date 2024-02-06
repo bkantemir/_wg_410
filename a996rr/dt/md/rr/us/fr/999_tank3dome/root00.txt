@@ -1,0 +1,14 @@
+
+//<mt_save_as=bogie mt_use=rust/>
+
+
+<element='/dt/md/rr/bogie/01standard/bogie00.txt' name=bogie1 class="OnRails" wheelBase=10 opaque pz=26 scale=1 />
+<element='/dt/md/rr/bogie/01standard/bogie00.txt' name=bogie2 class="OnRails" wheelBase=10 opaque pz=-26 ay=180 scale=1 />
+
+<include='frame01.txt' />
+<include='tank01.txt' />
+
+/*
+<element='/dt/md/rr/line-green.txt' attachTo=bogie1 pz=9/>
+<element='/dt/md/rr/line-red.txt' attachTo=bogie2 pz=9 />
+*/

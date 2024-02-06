@@ -1,0 +1,165 @@
+<setMaterial="car-body" valueOf="tin" />
+//<setMaterial="car-body" valueOf="hi-gloss" />
+
+<setVar="optN" pickOneOf="0,1,2,3,4,5,6,7,8,9,10" />
+<if="==" var1="optN" val2="0" >
+	<setMaterial="car-body" valueOf="hi-gloss" />
+	<setColor="car-body"  valueOf="yellow-orange" />
+	<setColor="car-body2" pickOneOf="yellow-orange,yellow-lemon,car-black,car-brown,ivory" /> //
+	<proceedTo="next-step" />
+</if>
+<setColor="car-body"  pickOneOf="m-denim,ivory,car-black,car-brown" /> //,tbird-gray,milk-coffee
+<setColor="car-body2" pickOneOf="m-denim,l-denim,ivory,car-brown,milk-coffee" /> //
+<label="next-step" />
+/*
+//<if="sameColor" var1="car-body" var2="car-black" >
+<setVar="optN" pickOneOf="0,1,2" />
+<if="==" var1="optN" val2="0" >
+	<setMaterial="car-body" valueOf="hi-gloss" />
+</if>
+*/
+//color scheme
+<if="sameColor" var1="car-body" var2="car-body2" >
+<setColor="car-wings" pickOneOf="ivory,car-black,car-brown,m-denim" /> //,milk-coffee,l-denim,yellow-orange
+//<element="2-tone-splitter" action=hide />
+<proceedTo="next-step" />
+</if>
+<setColor="car-wings" valueOf="car-body" />
+<label="next-step" />
+
+//<setColor="car-roof" valueOf="m-denim" />
+<setColor="car-roof" pickOneOf="#292222,#887777,car-body2,car-wings" /> //,milk-coffee
+
+<if="sameColor" var1="car-roof" var2="yellow-orange" >
+<setColor="car-roof" pickOneOf="#292222,#887777" />
+</if>
+<if="sameColor" var1="car-roof" var2="yellow-lemon" >
+<setColor="car-roof" pickOneOf="#292222,#887777" />
+</if>
+<if="sameColor" var1="car-roof" var2="ivory" >
+<setColor="car-roof" pickOneOf="#292222,#887777" />
+</if>
+
+<setColor="salon" pickOneOf="#222228,car-brown,cream,ivory,car-roof,car-body" /> //,car-body2,car-wings,#CCAA88
+
+//gold package?
+<setVar="optGold" pickOneOf="0,0,0,1" />
+<if="==" var1="optGold" val2="1" >
+<setMaterial="car-wire" valueOf="gold-wire" />
+<setMaterial="car-chrome" valueOf="roman-gold" />
+<setColor="chrome-color" valueOf="#825A00" />
+<proceedTo="next-step" />
+</if>
+<setMaterial="car-wire" valueOf="metal-wire" />
+<setMaterial="car-chrome" valueOf="chrome" />
+<setColor="chrome-color" valueOf="#666666" />
+<label="next-step" />
+
+//extras / fog-lights
+<setVar="optN" pickOneOf="0,1" />
+<if="==" var1="optN" val2="1" >
+<element="fog-lights" action=unhide />
+<proceedTo="next-step" />
+</if>
+<element="fog-lights" action=hide />
+<label="next-step" />
+
+//extras / signal-lights
+<setVar="optN" pickOneOf="0,1" />
+<if="==" var1="optN" val2="1" >
+<element="signal-lights" action=unhide />
+<proceedTo="next-step" />
+</if>
+<element="signal-lights" action=hide />
+<label="next-step" />
+
+
+//rim
+<setVar="optN" pickOneOf="1,1,2" />
+<if="==" var1="optN" val2="1" > //chrome
+	<if="==" var1="optGold" val2="1" >
+	<setMaterial="rim" valueOf="roman-gold" />
+	<setColor="rim-color" valueOf="#825A00" />
+	<proceedTo="next-step" />
+	</if>
+<setMaterial="rim" valueOf="chrome" />
+<setColor="rim-color" valueOf="#666666" />
+<proceedTo="next-step" />
+</if>
+<if="==" var1="optN" val2="2" > //body color
+<setMaterial="rim" valueOf="metallic" />
+//<setColor="rim-color" valueOf="car-wings" />
+<setColor="rim-color" pickOneOf="car-body,car-body2,car-wings" />
+<proceedTo="next-step" />
+</if>
+<if="==" var1="optN" val2="3" >
+<setMaterial="rim" valueOf="metallic" />
+<setColor="rim-color" valueOf="car-body2" />
+<proceedTo="next-step" />
+</if>
+<label="next-step" />
+
+//spare lid
+<setVar="optN" pickOneOf="1,1,2,3" />
+<if="==" var1="optN" val2="1" >
+<setMaterial="spare-lid" valueOf="car-body" />
+<setColor="spare-lid" valueOf="car-wings" />
+<proceedTo="next-step" />
+</if>
+<if="==" var1="optN" val2="2" >
+<setMaterial="spare-lid" valueOf="matte" />
+<setColor="spare-lid" valueOf="car-roof" />
+<proceedTo="next-step" />
+</if>
+<setMaterial="spare-lid" valueOf="car-chrome" />
+
+<label="next-step" />
+
+
+//trunk
+<setVar="optN" pickOneOf="1,3" />
+<if="==" var1="optN" val2="1" >
+<setMaterial="trunk" valueOf="car-body" />
+<setColor="trunk" valueOf="car-body" />
+<proceedTo="next-step" />
+</if>
+<if="==" var1="optN" val2="2" >
+<setMaterial="trunk" valueOf="car-body" />
+<setColor="trunk" valueOf="car-body2" />
+<proceedTo="next-step" />
+</if>
+<setMaterial="trunk" valueOf="matte" />
+<setColor="trunk" valueOf="car-roof" />
+
+<label="next-step" />
+
+
+//roof
+<element="top0" action=hide />
+<element="top1" action=hide />
+<element="top2" action=hide />
+
+<setVar="optN" pickOneOf="0,1,2" />
+<if="==" var1="optN" val2="0" >
+<element="top0" action=unhide />
+<proceedTo="next-step" />
+</if>
+<if="==" var1="optN" val2="1" >
+<element="top1" action=unhide />
+<proceedTo="next-step" />
+</if>
+<element="top2" action=unhide />
+
+<label="next-step" />
+
+//spare placement
+<setVar="optN" pickOneOf="0,0,0,1" /> //0-sides, 1-rear
+<if="==" var1="optN" val2="0" >
+<element="spare rear" action=hide />
+<element="spare sides" action=unhide />
+<proceedTo="next-step" />
+</if>
+<element="spare rear" action=unhide />
+<element="spare sides" action=hide />
+<label="next-step" />
+

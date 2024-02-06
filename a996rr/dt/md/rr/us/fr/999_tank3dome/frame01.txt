@@ -1,0 +1,103 @@
+<include='/dt/mt/materials.txt'/>
+
+<color_as=frame uColor=#222222/>
+<mt_save_as=frame mt_use=teflon uColor_use=frame/>
+
+
+<element name=frame attachTo=bogie1 headTo=bogie2 place2middle py=10 opaque hit>
+
+	<mt_use=frame/>
+	<group>//entire frame
+		<group> //mid section right
+			<box='2,1.5,46'/>
+			<a=right w=0 side=',' align=top/>
+			<box='2,0.5,46'/>
+			<a='top,right l' align=top/>
+			<group>//front thinner part
+				<box='2,1,10'/>
+				<a=top/>
+				<a='left,right,back'/>
+			</group align='top back' pz=23>
+			<clone=reflect xyz='0,0,1'/>
+		</group align=right px=9 > //mid section right
+		<clone=reflect xyz='1,0,0'/>
+		<group>//front 
+			<box='18,1,2'/>
+			<a=top>
+			<a='front,back,left,right'/>
+		</group align=top pz=34>//front 
+		<clone=reflect xyz='0,0,1'/>
+		<group>//tank support
+			<box='16,4,2'/>
+			<a='front,back,left,right'/>
+			<do sizeD='-6,0,0' applyTo='top only'/>
+			<do='calc normals'/>
+		</group align=bottom py=-1 pz=26>	//tank support
+		<clone=reflect xyz='0,0,1'/>
+		<group>//mid lower frame
+			<box='2,2,66'/>
+			<a='left,right' />//uColor=#ff0000/>
+			<a='top' mt_use=black/>
+		</group align=top py=-1.5>//mid lower frame
+		<group> //mid frame support, front
+			<box='14,1,1' sectX=3/>
+			<a='top,front,back'/>
+			<do py=-2 applyTo='bottom only' toY=0 fromX=-5 toX=5/>
+		</group align=top pz=8> //mid frame support, front
+		<clone=reflect xyz='0,0,1'/>
+		<group>//front footsteps
+			<group>//right footstep
+				<mt_use=frame mt_type=wire lineWidth=0.8 />
+				<line>
+					<p pxyz='0,0,0'/>
+					<p dx=0.5 dy=-0.5/>
+					<p dy=-3 r=0.2/>
+					<p dz=-2 r=0.2/>
+					<p dz=-0.5 dy=1 r=0.2/>
+					<p py=-0.2/>
+					<p px=0 py=0/>
+				</line>
+			</group px=9 pz=34.5>//right footstep
+			<clone=reflect xyz='1,0,0'/>
+		</group>//front footsteps
+		<clone=reflect xyz='0,0,1'/>
+		//tanks
+		<mt_use=frame />
+		<group>
+			<vs=cylinder whl='2,2,4' sectR=6 ext=1/>
+			<a='wrap,front,back'/>
+			<do='calc merge normals'/>
+		</group pxyz='6,-3,11'>
+		<clone=reflect xyz='1,0,0'/>
+		<group>
+			<vs=cylinder whl='3,3,6' sectR=7 ext=1/>
+			<a='wrap,front,back'/>
+			<do='calc merge normals'/>
+			<line mt_type=wire lineWidth=0.4>
+				<p pxyz='-6,0,7'/>
+				<p pxyz='0,0,5' r=0.5/>
+				<p dz=-10 r=0.5/>
+				<p pxyz='-6,0,-7'/>
+			</line>
+		</group pxyz='6,-3.5,-1'>
+		<group>//valve
+			<group>//wire part
+				<mt_use=metal-wire lineWidth=0.4 uColor=#111111/>
+				<line>
+					<ring whl='4.4,4.4,0' sectR=6/>
+				</line>
+				<short p0='-2,0,0' dx=4 lineWidth=0.2/>
+				<short p0='0,-2,0' dy=4 lineWidth=0.2/>
+				<short p0='0,0,0.5' dz=-8/>
+				<tip=start/>
+			</group headZto=y ay=20 py=8>//wire part
+			<group>//base
+				<mt_use=frame layer2as=''/>
+				<vs=cylinder whl='1.5,1.5,2' sectR=6/>
+				<a=front,wrap' />//uColor=#ff0000/>
+			</group headZto=y>//base
+		</group pxyz='-5,0,35.5'>//valve
+
+	</group >//entire frame
+
+</element>

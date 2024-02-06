@@ -1,0 +1,24 @@
+<mt_save_as=black mt_type=flat uColor=#000000 />
+
+<mt_save_as=rim mt_use=chrome />
+<mt_save_as="rim-wire" mt_use="metal-wire" lineWidth=1 uColor_use=chrome 4wire/>
+
+<color_as=wheels-color uColor_use=frame />
+<mt_save_as=wheel_main mt_use=frame />
+<mt_save_as=rim_wall mt_use=rim />
+<mt_save_as=wheel_wire mt_use=metal-wire uColor_use=wheels-color 4wire lineWidth=0.4 />
+
+<texture_as="tx1" src="/dt/md/rr/center02_8.bmp" ckey="#00ff00"/>
+
+<classProps spokesN=0 wheelRadius=4.5 />
+	<buildWheelPair=rims radius=4.5 rimWall=0.6 noAxis /> //noBackSide
+	<buildWheelPair=wheelCenter diameter=3 uTex2nm_use=tx1 />
+
+<element class="WheelPair" name=spokes >
+	<buildWheelPair=spokes spokesN=8 spokeWidth=0.3 />// distanceBetweenSpokes=3
+</element>
+
+<element class="WheelPair" name=weight >
+	<buildWheelPair=wheelWeight angleRange=120 centerShift=concave />
+	<buildWheelPair=rodAxis lever=2 diameter=2 uTex2nm_use=tx1 />
+</element>

@@ -1,0 +1,82 @@
+//#version 320 es
+precision highp float;
+
+#if defined(GLTF_SKIN)
+	layout (binding = 0) uniform uboBones {
+		mat4[100] uBoneTransforms;
+	};
+	uniform mat4 uVPcamera;
+
+	layout (location = 6) in ivec4 aJoints;
+	layout (location = 7) in vec4 aWeights;
+	
+	//calculatables
+	mat4 uMM; // Model matrix (for vHalfVector for glares)
+	mat4 uMVP; // transform matrix (Model-View-Projection)
+#else
+	uniform mat4 uMVP; // transform matrix (Model-View-Projection)
+#endif
+
+layout (location = 0) in vec3 aPos; // position attribute (x,y,z)
+
+#if defined(USE_NORMALS)
+	#if defined(GLTF_SKIN)
+		uniform mat4 uLookAt;
+		mat3 uMV3x3; // Model-View matrix (for calculating normals into eye space)
+	#else
+		uniform mat3 uMV3x3; // Model-View matrix (for calculating normals into eye space)
+	#endif
+	layout (location = 3) in vec3 aNormal; // normal attribute (x,y,z)
+	out vec3 vNormal; // varying normal (to pass to fragment shader)
+#endif
+
+out float vZ;
+
+#if defined(USE_TUV0)
+	layout (location = 1) in vec2 aTuv; //attribute TUV (texture coordinates)
+	out vec2 vTuv; //varying TUV (pass to fragment shader)
+#endif
+#if defined(USE_NORMALMAP)
+	layout (location = 2) in vec2 aTuv2; //attribute TUV (texture coordinates)
+	out vec2 vTuv2; //varying TUV (pass to fragment shader)
+#endif
+
+void main(void) { 
+
+#if defined(GLTF_SKIN)
+	int boneN = aJoints[0];
+	uMM = uBoneTransforms[boneN] * aWeights[0];
+	for(int i=1; i<4; i++){
+		if(aWeights[i] == 0.0)
+			continue;
+		boneN = aJoints[i];
+		uMM = uMM + (uBoneTransforms[boneN] * aWeights[i]);	
+	}
+	
+	uMVP = uVPcamera * uMM;
+	
+	#if defined(USE_NORMALS)
+		uMV3x3 = mat3(uLookAt * uMM); // Model-View matrix (for calculating normals into eye space)
+	#endif
+	
+	#if defined(WITHSHADOWS)
+		uMVP4dm = uVPshadow	* uMM;
+	#endif
+#endif
+
+	gl_Position = uMVP * vec4(aPos, 1.0);
+	vZ = gl_Position.z;
+#if defined(USE_NORMALS)	
+	// Transform the normal's orientation into eye space. 
+	vNormal = uMV3x3 * aNormal;	
+#endif
+
+#if defined(USE_TUV0)
+	vTuv = aTuv;
+#endif
+#if defined(USE_NORMALMAP)
+	vTuv2 = aTuv2;
+#endif
+}
+
+

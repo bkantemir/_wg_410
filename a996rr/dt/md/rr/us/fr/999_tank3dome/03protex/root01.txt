@@ -1,0 +1,50 @@
+<model="36' 3 dome tank car" yearFrom=1935 />
+
+<color_as=body uColor=#333333/> //black
+<mt_save_as=body mt_use=gloss uColor_use=body />
+
+//<color_as=around-handle uColor_use=gold/>//uColor=#ff0000/>//
+//<mt_save_as=around-handle mt_use=metal-wire uColor_use=around-handle lineWidth=0.3/>
+<color_as=around-handle uColor_use=body/>//uColor=#ff0000/>//
+<mt_save_as=around-handle mt_use=metal-wire uColor_use=around-handle 4wire lineWidth=0.3/>
+
+<include='../root00.txt'/>
+
+<texture_as=logo src=protex01.bmp ckey=#00ff00/>
+<mt_save_as=logo mt_use=plastic uTex0_use=logo uAmbient=0.4 sticker/>// uTex1alphaChannelN=0
+
+<for_element=domes>
+	<group>//right side
+		<group>//center dome
+			<mt_adjust mt_use=logo >
+				<a2mesh wh='4,3' xywh='0,0,95,55' all markedAs=dome onThe=right py=2 detachBy=0.1 />//logo
+			</mt_adjust>
+		</group >
+		<clone pz=-20.5/>
+		<clone pz=41/>
+	</group >
+	<clone ay=180/>
+</for_element>
+
+<for_element=tank>
+	<group>
+		<mt_adjust mt_use=logo>
+			<a2mesh wh='30,5' xywh='95,1,160,28' all markedAs=body onThe=right px=0 ax=-20 detachBy=0.1 />//PROTEX
+			<a2mesh wh='30,1.5' xywh='96,29,153,16' all markedAs=body onThe=right px=0 ax=6 detachBy=0.1 />//industries
+			<a2mesh wh='8,6' xywh='0,0,95,55' all markedAs=body onThe=right px=19 ax=-15 detachBy=0.1 />//logo
+			<a2mesh wh='13,1.8' xywh='180,47,75,15' all markedAs=body onThe=right px=-23 ax=-27 detachBy=0.1 />//PDAX
+
+			<a2mesh wh='30,5' xywh='95,1,160,28' all markedAs=body onThe=left px=0 ax=-20 detachBy=0.1 />//PROTEX
+			<a2mesh wh='30,1.5' xywh='96,29,153,16' all markedAs=body onThe=left px=0 ax=6 detachBy=0.1 />//industries
+			<a2mesh wh='8,6' xywh='0,0,95,55' all markedAs=body onThe=left px=19 ax=-15 detachBy=0.1 />//logo
+			<a2mesh wh='13,1.8' xywh='180,47,75,15' all markedAs=body onThe=left px=-23 ax=-27 detachBy=0.1 />//PDAX
+		</mt_adjust>
+		<mt_adjust mt_type=phong uColor=#ffffff uAlphaFactor=0.95 uTex1mask_src='/dt/md/rr/us/txt01.bmp' uTex1alphaChannelN=0>
+			<a2mesh wh='6,4' xywh='0,48,128,47' all markedAs=body onThe=right px=27 py=1 detachBy=0.1 />//text
+			<a2mesh wh='9,1.8' xywh='0,11,111,19' all markedAs=body onThe=right px=-23 ax=0 detachBy=0.1 />//under PDAX
+
+			<a2mesh wh='6,4' xywh='0,48,128,47' all markedAs=body onThe=left px=27 py=1 detachBy=0.1 />//text
+			<a2mesh wh='9,1.8' xywh='0,11,111,19' all markedAs=body onThe=left px=-23 ax=0 detachBy=0.1 />//under PDAX
+		</mt_adjust>
+	</group >
+</for_element>

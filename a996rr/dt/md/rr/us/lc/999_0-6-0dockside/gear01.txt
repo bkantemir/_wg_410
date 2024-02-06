@@ -1,0 +1,77 @@
+
+<color_as=gear uColor_use=frame />
+<mt_save_as=gear mt_use=frame />
+
+<texture_as=tx2gear src=gear02.bmp ckey=#00ff00/>
+<mt_save_as=gear2nm mt_use=gear uTex2nm_use=tx2gear />
+
+<mt_use=gear2nm />
+
+<element class=Gear name=side_rod >
+	<group>
+		<vs=box whl="0.4,1.2,20" />
+		<a=right xywh2nm='10.5,2,0,6' side=',black' /> 
+		<a='top l' mt_use=gear mt_type=phong -nm uColor_use=gear/>
+		<do align=right />
+		/*
+		<vs=box whl="0.2,2,2" />
+		<a=right xywh2nm='0,0,10,10' /> 
+		<a=right xywh2nm='0,0,10,10' pz=-10 /> 
+		<a=right xywh2nm='0,0,10,10' pz=10 /> 
+		*/
+		<group>//center hinge
+			<vs=cylinder whl='3,3,0.4' sectR=6/>
+			<a=wrap -nm/>
+			<a=front xywh2nm='0,0,10,10' /> 
+		</group headZto=x align=right px=0.1>//center hinge
+		<clone pz=-10/>
+		<clone pz=20/>
+		
+		<vs=box whl="0.1,2,2" />
+		<a=right xywh2nm='12,0,8,8' pz=2.5 /> 
+	</group >
+</element>
+
+
+<element class=Gear name=main_rod dz=-10 lever=20.5 >
+	<group>
+		<group>
+			<vs=box whl="0.4,1.4,20" />
+			<a=right xywh2nm='10.5,2,0,6' side=',black' /> // uColor=#C38C39 mt_use=teflon
+			<a='top l' mt_use=gear mt_type=phong -nm uColor_use=gear/>
+			<do align=right />
+		</group align=back >
+		/*
+		<vs=box whl="0.2,2.2,2.2" />
+		<a=right xywh2nm='0,0,10,10' /> //mt_use=chrome />//uColor=#bbbbbb 
+		*/
+		<group>//main hinge
+			<vs=cylinder whl='3,3,0.4' sectR=6/>
+			<a=wrap -nm/>
+			<a=front xywh2nm='0,0,10,10' /> 
+		</group headZto=x align=right px=0.1>//main hinge
+
+		<vs=box whl="0.4,1.5,1.5" />
+		<a=right xywh2nm='12,0,8,8' pz=20 /> 
+		
+	</group >
+</element>
+
+<element class=Gear name=crosshead >
+	<group>
+		<vs=box whl="0.2,3,3" />
+		<a=right xywh2nm='0,0,10,10' /> 
+		<group> //top part
+			<vs=box whl="0.8,2,5" />
+			<a=right xywh2nm='20,0,12,6'  /> 
+			<a='top,front,back' uTex2nm=-1 />
+		</group py=1.5 >
+		<group> //piston shaft
+			<mt_use=silver />
+			<vs=cylinder whl='0.6,0.6,5' sectR=6 />
+			<a=wrap align=back pz=2 />
+			<vs=box whl='1,1,1' />
+			<a='right,top,front,back' pz=2 />
+		</group>
+	</group >
+</element>

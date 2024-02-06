@@ -1,0 +1,62 @@
+<include='/dt/mt/materials.txt'/>
+
+<texture_as=bogie2nm src='bogie01nm.bmp' ckey=#00ff00/>
+<mt_save_as=bogie mt_use=teflon uColor=#444444/>
+
+<texture_as=spring01nm src='/dt/md/spring2.bmp' glRepeat=GL_REPEAT />
+
+<mt_use=bogie/>
+<group> //entire bogie
+	<group>//right side
+		<box='13,4,0'/>
+		<a=front side=',black-nm' nm=bogie2nm xywh2nm='0,0,116,32'/>
+		<group>//left wheel box
+			<box='1.4,1.4,1'/>
+			<a='top,left,right' />
+			<a='front'  nm=bogie2nm xywh2nm='07,11,13,13' />//uColor=#0000ff/>
+			<do pz=-0.3 applyTo='top front only'/>
+			<do='calc normals'/>
+		</group align=back px=-5>//left wheel box
+		<clone=reflect xyz='1,0,0'/>
+
+		<group>//left spring
+			<vs=cylinder whl='1.7,1.7,2' sectR=5 angleFromTo='-190,10'/>
+			<a=wrap uTex2nm_use=spring01nm  xywh2nm_GL='0.5,0,0,4' />//uColor=#ff0000 />
+			<do='merge normals'/>
+		</group headZto=y px=-0.8 pz=-0.2 py=-1.6 align=bottom >//left spring
+		<clone=reflect xyz='1,0,0'/>
+		<group>//springs box
+			<box='3.2,0.8,1'/>
+			<a='top,left,right' />
+			<a='front' nm=bogie2nm xywh2nm='43,6,30,7' />//uColor=#0000ff/>
+			<do pz=-0.5 applyTo='top front only'/>
+			<do='calc normals'/>
+		</group align='back top' py=1.4 pz=-0.3 >//left wheel box
+		
+		<group> //thickness
+			<line mt_type=wire lineWidth=0.5 >//mt_type=flat lineWidth=1 lineWidthFixed=1 uColor=#ff0000 >//
+				<group>//left side
+					<p pxyz='-6,-0.7,0' />
+					<p dy=1 dx=-0.5 r=0.2/>
+					<p dy=1.5 r=0.2/>
+					<p dx=4.2 dy=0.2 r=0.2/>
+					//<p dy=-1/>
+				</group>//left side
+				<clone=reflect xyz='1,0,0'/>
+			</line>
+		</group pz=-0.25>//0.1> //thickness
+	</group ay=90 px=6.5 >//right side
+	<clone=reflect xyz='1,0,0'/>
+	
+	<a='top,front,back' -nm box='13,1,2' py=0.5/>
+	<group>//car holder
+		<vs=cylinder whl='3,3,3' sectR=6/>
+		<a=wrap -nm/>
+	</group headZto=y align=bottom py=1 >//car holder
+</group py=3.5> //entire bogie
+
+<element='/dt/md/rr/wheel/w01d6.txt' class=WheelPair pz=5 py=3 opaque/>
+<element='/dt/md/rr/wheel/w01d6.txt' class=WheelPair pz=-5 py=3 opaque/>
+
+<element='/dt/md/rr/coupler/couplerbox01.txt' class=coupler full pz=9 opaque/>
+

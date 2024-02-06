@@ -1,0 +1,13 @@
+<texture_as="tx2coupler" src="coupler01.bmp" ckey="#00ff00"/>
+	
+//<mt_use=gunmetal uColor=#9f9098 />
+<mt_use=rust />
+	<group> //coupler box
+		<vs=box-tank whl='3,3,4' ext=0.5 extB=0 sectR=1 />
+		<a='top all,back all,left h,right h' />
+		<a='front' xywh2nm='0,0,8,8' uTex2nm_use=tx2coupler />
+		<do='merge normals' />
+	</group align=front >//floor
+
+//<element='couplerlock01.txt'/>
+

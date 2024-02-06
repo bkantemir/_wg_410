@@ -1,0 +1,52 @@
+<setMaterial="car-body" valueOf="pearl" />
+
+<setColor="car-body" valueOf="yellow-orange" />
+<setColor="car-body2" valueOf="yellow-lemon" />
+
+<setColor="car-wings" valueOf="car-body" />
+
+<setColor="salon" valueOf="#222228" />
+
+<setColor="car-roof" valueOf="#887777" />
+
+//extras / fog-lights
+<setVar="optN" pickOneOf="1" />
+<if="==" var1="optN" val2="1" >
+<element="fog-lights" action=unhide />
+<proceedTo="next-step" />
+</if>
+<element="fog-lights" action=hide />
+<label="next-step" />
+
+
+//rim
+<setMaterial="rim" valueOf="chrome" />
+<setColor="rim-color" valueOf="#666666" />
+//<setMaterial="rim" valueOf="metallic" />
+//<setColor="rim-color" valueOf="yellow-orange" />
+
+//spare lid
+<setMaterial="spare-lid" valueOf="chrome" />
+
+
+//trunk
+<setMaterial="trunk" valueOf="car-body" />
+<setColor="trunk" valueOf="car-body" />
+
+//roof
+<element="top0" action=unhide />
+<element="top1" action=hide />
+<element="top2" action=hide />
+
+
+//spare placement
+<setVar="optN" pickOneOf="0" /> //0-sides, 1-rear
+<if="==" var1="optN" val2="0" >
+<element="spare rear" action=hide />
+<element="spare sides" action=unhide />
+<proceedTo="next-step" />
+</if>
+<element="spare rear" action=unhide />
+<element="spare sides" action=hide />
+<label="next-step" />
+

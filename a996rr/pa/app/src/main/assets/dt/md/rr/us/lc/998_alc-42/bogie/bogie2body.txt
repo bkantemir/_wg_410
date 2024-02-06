@@ -1,0 +1,37 @@
+//<include='/dt/mt/materials.txt'/>
+
+<texture_as=bogie01nm src='bogie02nm.bmp' ckey=#00ff00/>
+//<mt_save_as=bogie mt_use=gunmetal uSpecularIntencity=0.4 />//teflon uColor=#444444/>
+
+//<texture_as=spring01nm src=spring2.bmp glRepeat=GL_REPEAT />
+
+<mt_use=bogie />//uColor=#ff0000/>
+
+<group> //entire bogie connectors
+	<group>//right side
+		<group>//vert cylinder group
+			<group>//top box
+				<box='1,1,1'/>
+				<a='left,right,front'/>
+			</group align='front top' >
+			<group> //vert cylinder
+				<vs=cylinder whl='1.0,1.0,2.8' sectR=6/>
+				<a='wrap,front' uSpecularIntencity=0.8/>//uColor=#0000ff/>
+			</group align=front ax=-62 py=-1 pz=-0.5> //vert cylinder
+		</group px=-2>//vert cylinder group
+		<group>//horizontal cylinder group
+			<group>//top box
+				<box='2,3,0'/>
+				<a=front xywh2nm='185,0,20,30' uTex2nm_use=bogie01nm />//uColor=#ffff00 />
+			</group align='front top' >
+			
+			<group> //horizontal cylinder
+				<vs=cylinder whl='1.0,1.0,5.2' sectR=6/>
+				<a='wrap,front,back' uSpecularIntencity=0.8/>//uColor=#ff0000/>
+			</group align=back ay=-108 ax=12 py=-2.5 px=-1> //horizontal cylinder
+			
+		</group px=6>//horizontal cylinder group
+	</group ay=90 px=9 >//right side
+	<clone=reflect xyz='1,0,0'/>
+</group align=top py=7> //entire connectors
+

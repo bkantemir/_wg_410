@@ -1,0 +1,22 @@
+<color_as=handles uColor=#ffcc00 />
+
+	<group> // bumper
+		<vs=box whl='18,3,1' />
+		<a='top,left,right,front,back' align=front />
+		<group>//front right dtep
+			<line mt_use=body mt_type=wire lineWidth=0.6 uColor_use=handles noShadow>
+				<group> //left side
+					<p pxyz='-1.5,0,0' />
+					<p dz=0.2 />
+					<p dy=-4 />
+					<p dx=-0.5 />
+					<p dz=1 r=0.1 />
+				</group>
+				<clone="reflect" xyz="1,0,0" />
+			</line>
+			//step
+			<vs=box whl='4.4,0.6,1.4' />
+			<a=top py=-4 pz=0.7 uColor_use=handles />
+		</group px=6 >
+		<clone="reflect" xyz="1,0,0" />
+	</group py=6 >// bumper

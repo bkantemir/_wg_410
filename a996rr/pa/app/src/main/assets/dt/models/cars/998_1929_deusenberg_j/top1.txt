@@ -1,0 +1,145 @@
+<elementProps opaque />
+<texture_as="whitenoise2" src="/dt/mt/wn64_blur1.bmp"/>
+<mt_adjust_as="under_side" mt_use="matte" uColor="#333333" layer2as="" /> //matte
+
+<texture_as="tx1" src="body01.bmp" ckey="#00ff00"/>
+
+<color_as="car-roof" uColor_use="car-black" />
+<mt_use="matte" mt_name="car-roof" uColor_use="car-roof" />
+
+<mt_use="car-roof" uTex2nm_use="tx1" />
+
+			<group>
+				
+				<group mark="roof-top"> //top
+					<vs="box_tank" whl="19,0,11.5" extX=2 extU=2 extF=0.5 sectR=2 sectX=4 sectZ=2 side=",under_side" />
+					<a="top all" xywh2nm="1.5,19.5,1,15" align='back' />
+		<do py=0.2 applyTo="midX" toZ=0.5 />
+					<do scaleTo="x,1,x" applyTo="front pow2" />
+					<group>
+						<mt_adjust uTex2nm_src="" >
+							<vs="box" whl="23,5,0.5" sectY=5 side=",under_side" />
+							<a="left,right" align='back' />
+							<do py=0.5 applyTo="front bottom only" />
+							<do pz=1 applyTo="front top only" />
+						</mt_adjust>						
+					</group align="top" >
+					
+					<do scaleTo="20,x,x" fromY=0.1 applyTo="front pow2" />
+					<do scaleTo="21,x,x" toY=0.1 applyTo="front pow2" />
+					<do py=1 applyTo=front /> //fromY=0 />
+					
+				</group py=5 >
+				
+				<group mark="roof-top"> //back
+					<vs="box_tank" whl="19,5,10" extX=2 extU=2 sectR=2 sectX=4 side=",under_side" />
+					<group mark="roof-segment" > //upper segment start
+						<mt_adjust uTex2nm_src="" /> //uColor="#ff0000" >
+							<a="top" mark="roof-top" />
+							<a="left all,right all" />
+		<do py=0.2 applyTo="midX" />
+							<mark="a00" fromZ=0 />
+							<mark="a02" toZ=0 />
+						</mt_adjust >
+					</group >
+					<group mark="roof-segment" > //upper segment
+						<a="top" xywh2nm="4.5,19.5,1,15" mark="roof-top" />
+						<a="left all,right all" xywh2nm="4.5,19.5,1,15" flip2nm=90 />
+		<do py=0.2 applyTo="midX" />
+						<mark="a02" fromZ=0 />
+						<mark="a35" toZ=0 />
+					</group >
+					<group mark="roof-segment" > //upper2lower segment
+						<mt_adjust uTex2nm_src="" /> //uColor="#ff0000" >
+							<a="top" mark="roof-top" />
+							<a="left all,right all" />
+		<do py=0.2 applyTo="midX" />
+							<mark="a35" fromZ=0 />
+							<mark="a37" toZ=0 />
+						</mt_adjust >
+					</group >
+					<group> //lower segment
+						<mt_adjust uTex1mask_use="tx1" uTex2nm_src="" >
+							<a="top" xywh2nm="4.5,19.5,1,15" xywh="7.5,18.5,51,22" mark="roof-segment2" />
+						</mt_adjust>
+						<a="left all,right all" xywh2nm="4.5,19.5,1,15" flip2nm=90 />
+		<do py=0.2 applyTo="midX" fromZ=0 />
+						<mark="a37" fromZ=0 />
+						<mark="a90" toZ=0 />
+						<do py=-1.8 all markedAs="a90" fromY=0 />
+					</group >
+					<do scale="1,1,0" align="front bottom" />
+					<do ax=-2 markedAs="a02" />
+					<do ax=-39 markedAs="a35" />
+					<do ax=-41 markedAs="a37" />
+					<do ax=-90 markedAs="a90" />
+				</group >
+				<do="calc normals" />
+				<do="merge normals" />
+				<do="set normals" xyz="1,0,0" fromX=11 />
+				<do="set normals" xyz="-1,0,0" toX=-11 />
+
+				<mt_use="car-roof" mt_type="wire" lineWidth=0.3 uSpecularIntencity=0 noShadow uAlphaFactor=0.5 />
+				//roof stitches
+				<group>
+					<line>
+						<p pxyz="-9,-8,0" />
+						<p py=14 />
+					</line>
+					<line2mesh all markedAs="roof-top" onThe="top" detachBy=0.1 />
+				</group>
+				<clone=reflect xyz="1,0,0" />
+				//window shitch
+		//<mt_type="flat" lineWidth=0.3 uColor="#ffff00" />
+				<mt_use="car-roof" mt_type="wire" lineWidth=0.4 uSpecularIntencity=0 noShadow uAlphaFactor=0.7 />
+				<group>
+					<line>
+						<ring whl="11,3,0" sectR=20 />
+					</line>
+					<line2mesh all markedAs="roof-top" onThe="back" detachBy=0.1 py=3.8 />
+				</group>
+
+				//rivets
+<mt_use="chrome" mt_name="car-chrome" /> 
+				<mt_use="car-chrome" uTex2nm_use="tx1" noShadow />
+				<vs=box whl="0,0.8,0.8" />
+				<group>
+					<group>
+						<a=right xywh2nm="11,1,2,2" />
+					</group pxyz="11.6,0.5,-0.5 >
+					<clone pz=-3 />
+				</group >
+				<clone=reflect xyz="1,0,0" />
+				<vs=box whl="0.8,0.8,0" />
+				<group>
+					<a=back xywh2nm="11,1,2,2" />
+				</group pxyz="9,0.5,-5.3 >
+				<clone px=-3 />
+				<clone px=-3 />
+				<clone px=-3 />
+				<clone px=-3 />
+				<clone px=-3 />
+				<clone px=-3 />
+				
+				<group> //front ropes
+					//<mt_use="matte" mt_type="wire" lineWidth=0.5 uColor="#aaaa99" />
+					<mt_use="car-roof" mt_type="wire" lineWidth=0.4 />
+					<short p0="-9.5,1,13" dy=5.5 dz=-1.5 />
+				</group>
+				<clone=reflect xyz="1,0,0" />
+
+				
+				//rear window
+				<element >
+					<group>
+						<group>
+							<mt_use="glass-plain" />
+							<vs=box whl="12,4,0" />
+							<a=back />
+							<do="normalsFrom" xyz="0,0,30" />
+						</group py=3 pz=-4.5 >
+					</group >
+				</element>
+				
+			</group pxyz="0,-1,4/5" >
+	

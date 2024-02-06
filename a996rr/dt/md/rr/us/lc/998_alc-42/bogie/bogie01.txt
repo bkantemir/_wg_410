@@ -1,0 +1,72 @@
+<include='/dt/mt/materials.txt'/>
+
+<texture_as=bogie01nm src='bogie02nm.bmp' ckey=#00ff00/>
+<mt_save_as=bogie mt_use=gunmetal uSpecularIntencity=0.4 />//teflon uColor=#444444/>
+
+<texture_as=spring01nm src='/dt/md/spring2.bmp' glRepeat=GL_REPEAT />
+
+<mt_use=bogie />//uColor=#ff0000/>
+<group> //entire bogie
+	<group>//right side
+		<box='29,5,0'/>
+		<a=front xywh2nm='8,0,176,30' uTex2nm_use=bogie01nm py=0.5 />//side=',black-nm'/>
+		<group>//side box
+			<box='2,2,1.5'/>
+			<a='left,right,front,bottom' />//uColor=#00ff00/>
+			<a=top xywh2nm='0,9.5,8,0' uTex2nm_use=bogie01nm  />//uColor=#00ff00/>
+			<do py=-1.5 applyTo=front fromY=0/>
+			<do='calc normals'/>
+			<do scale=0.6/>
+		</group align=back py=-0.5 px=-2>
+		<clone az=-80 px=1 py=-2.5/>
+		
+		<group>//front wheel
+			<vs=cylinder whl='2,2,1' sectR=6/>
+			<a=wrap />
+			<a=front xywh2nm='0,0,8,8' uTex2nm_src=bogie02nm.bmp/>
+			<do align=back'/>
+			<group>//right spring
+				<vs=cylinder whl='2,2,2.5' sectR=5 angleFromTo='-190,10'/>
+				<a=wrap uTex2nm_use=spring01nm  xywh2nm_GL='0.5,0,0,4' />//uColor=#ff0000/>
+				<do='merge normals'/>
+			</group headZto=y px=1.7 pz=-0.2 align=bottom >//right spring
+			<clone=reflect xyz='1,0,0'/>
+		</group px=10>//front wheel
+		<clone=reflect xyz='1,0,0'/>
+		
+		<group> //fat spring 2 body
+			<vs=cylinder whl='3,3,3' sectR=8 />
+			<a=wrap uTex2nm_use=spring01nm  xywh2nm_GL='0.5,0,0,4' />//uColor=#ff0000/>		
+			<do='merge normals'/>
+		</group headZto=y pz=-2 align=top py=3.5 > //fat spring 2 body
+		
+		<group>//thickness
+			<line mt_type=wire lineWidth=0.5 >
+				<group>//left side
+					<p pxyz='-14.5,0.5,0' r=0.02/>
+					<p dy=2.5 r=0.2/>
+					<p dx=8.5 r=0.4/>
+					<p dx=2 dy=-2.1 r=0.5/>
+				</group>//left side
+				<clone=reflect xyz='1,0,0'/>
+			</line>
+		</group pz=-0.25>//thickness
+	</group ay=90 px=6.5 >//right side
+	<clone=reflect xyz='1,0,0'/>
+	
+	<group> //middle part
+		<box='6,3,30'/>
+		<a='front,back,top' />
+		<a='left,right' mt_use=black/>
+	</group> //middle part
+	/*
+	<group> //bottom part
+		<box='13,2,6'/>
+		<a='front,back,left,right' uColor=#ff0000/>
+	</group align=top py=-2 > //bottom part
+	*/
+</group py=4> //entire bogie
+
+<element='w01d7.txt' class=WheelPair pz=10 py=3.5 opaque/>
+<element='w01d7.txt' class=WheelPair pz=-10 py=3.5 opaque/>
+

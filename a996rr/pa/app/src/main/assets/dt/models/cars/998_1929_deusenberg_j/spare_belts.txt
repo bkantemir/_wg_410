@@ -1,0 +1,8 @@
+			<mt_use="leather" uSpecularIntencity=0.6 uColor="#552222" noShadow /> //
+			<vs="box-tank" whl="4.5,1.4,0.9" ext=1 extZ=0 sectR=2 />
+			<group>
+				<a="right,top h,bottom h" />
+			</group px=1.5 py=-4.4 >
+			<clone ax=120 />
+			<clone ax=120 />
+

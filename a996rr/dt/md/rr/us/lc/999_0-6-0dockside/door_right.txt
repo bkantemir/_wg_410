@@ -1,0 +1,23 @@
+<color_as=door uColor_use=cabin/>
+<mt_save_as=door mt_use=cabin uColor_use=door/>
+
+
+<mt_use=door>
+	<group>
+		<box='0.3,9,3 />
+		<texture_as=plank4 src='/dt/md/plank4.bmp' glRepeat=GL_REPEAT />
+		<a=left nm=plank4 xywh2nm_GL='0,0,3,0' side=in align=bottom />
+		<mt_use=door rmt_type=wire lineWidth=0.3 noShadow />//uColor=#00ff00/>
+		<short p0='0,9,-1.5' dz=3/> //window
+		<short p0='0,0,-1.5' dz=3/> //bottom
+		<short dy=14.5/> //left
+		<short dz=-3/> //top
+		<short dy=-14.5/> //right
+/*
+		<for_element=glass>
+			<mt_use=glass-plain uAlphaFactor=0.6 />
+			<a=left side=in h=5 align=bottom py=9 />			
+		</for_element>
+	*/
+	</group align=left sizeD='0,-0.6,0'>//-0.6'>
+</mt_use>

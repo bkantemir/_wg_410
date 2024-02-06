@@ -1,0 +1,27 @@
+<mt_use=bell />
+<group>
+	<group> //main body/top part
+		<vs=cap whl='1,1,0.3' sectR=6 sectZ=2 />
+		<a=front headZto=-z align=front/>
+		<group>
+			<vs=cylinder whl='1,1,1' sectR=6 sectZ=3 />
+			<a=wrap />
+			<do scale='1.6,1.6,1' applyTo='front pow2' />
+		</group align=back>
+		<do='calc merge normals'/>
+	</group > //main body/top part
+	<group> //bottom lip
+		<vs=cylinder whl='1.6,1.6,0.4' sectR=6 />
+		<a=wrap />
+		<a=front mt_use=black />
+	</group pz=1.2> //bottom lip
+		<group> //top button
+			<box='1,1,1' />
+			<a=front,back,left,right,top,bottom' />
+			<do='normalsFrom' xyz='0,0,0'/>
+			<do scale=0.3 />
+		</group align=front pz=-0.3 >
+	
+
+</group headZto=-y sizeTo='x,x,1' >
+

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{f7284a83-ba74-43c2-a99f-cd23a4c7d9c1}</ProjectGuid>
+    <RootNamespace>pw</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>TrainDemo</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>DemoAmtrak</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..;..\..\p_windows\glad\include;..\..\engine\modeler;..\..\engine\ui;..\..\engine;..\..\p_windows;..\..\p_windows\glfw338win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\p_windows\glfw338win64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "..\dt\*.*" "$(TargetDir)dt\" /E /R /D /y
+xcopy "..\..\engine\dt\*.*" "$(TargetDir)dt\" /E /R /D /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..;..\..\p_windows\glad\include;..\..\engine\modeler;..\..\engine\ui;..\..\engine;..\..\p_windows;..\..\p_windows\glfw338win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\p_windows\glfw338win64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "..\dt\*.*" "$(TargetDir)dt\" /E /R /D /y
+xcopy "..\..\engine\dt\*.*" "$(TargetDir)dt\" /E /R /D /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\engine\Camera.cpp" />
+    <ClCompile Include="..\..\engine\Coords.cpp" />
+    <ClCompile Include="..\..\engine\DrawJob.cpp" />
+    <ClCompile Include="..\..\engine\FileLoader.cpp" />
+    <ClCompile Include="..\..\engine\Gabarites.cpp" />
+    <ClCompile Include="..\..\engine\geom2d\ArcXY.cpp" />
+    <ClCompile Include="..\..\engine\geom2d\LineXY.cpp" />
+    <ClCompile Include="..\..\engine\gltf\GLTFanim2nodesMap.cpp" />
+    <ClCompile Include="..\..\engine\gltf\GLTFanimation.cpp" />
+    <ClCompile Include="..\..\engine\gltf\GLTFnode.cpp" />
+    <ClCompile Include="..\..\engine\gltf\GLTFparser.cpp" />
+    <ClCompile Include="..\..\engine\gltf\GLTFskin.cpp" />
+    <ClCompile Include="..\..\engine\gltf\GLTFskinShader.cpp" />
+    <ClCompile Include="..\..\engine\Line3D.cpp" />
+    <ClCompile Include="..\..\engine\Material.cpp" />
+    <ClCompile Include="..\..\engine\MaterialAdjust.cpp" />
+    <ClCompile Include="..\..\engine\modeler\CoordOnLine.cpp" />
+    <ClCompile Include="..\..\engine\modeler\DirLight.cpp" />
+    <ClCompile Include="..\..\engine\modeler\GroupTransform.cpp" />
+    <ClCompile Include="..\..\engine\modeler\ModelBuilder.cpp" />
+    <ClCompile Include="..\..\engine\modeler\ModelBuilder1base.cpp" />
+    <ClCompile Include="..\..\engine\modeler\ModelLoader.cpp" />
+    <ClCompile Include="..\..\engine\modeler\ModelLoaderCmd.cpp" />
+    <ClCompile Include="..\..\engine\modeler\MyPolygon.cpp" />
+    <ClCompile Include="..\..\engine\modeler\MyPolygonRib.cpp" />
+    <ClCompile Include="..\..\engine\modeler\Switcher.cpp" />
+    <ClCompile Include="..\..\engine\modeler\TexCoords.cpp" />
+    <ClCompile Include="..\..\engine\MyColor.cpp" />
+    <ClCompile Include="..\..\engine\SceneSubj.cpp" />
+    <ClCompile Include="..\..\engine\Shader.cpp" />
+    <ClCompile Include="..\..\engine\Shadows.cpp" />
+    <ClCompile Include="..\..\engine\Texture.cpp" />
+    <ClCompile Include="..\..\engine\TheTable.cpp" />
+    <ClCompile Include="..\..\engine\ui\Coords2D.cpp" />
+    <ClCompile Include="..\..\engine\ui\ProgressBar.cpp" />
+    <ClCompile Include="..\..\engine\ui\UISubj.cpp" />
+    <ClCompile Include="..\..\engine\utils.cpp" />
+    <ClCompile Include="..\..\engine\XMLparser.cpp" />
+    <ClCompile Include="..\..\p_windows\glad\src\glad.c" />
+    <ClCompile Include="..\..\p_windows\platform.cpp" />
+    <ClCompile Include="..\model_car\CarWheel.cpp" />
+    <ClCompile Include="..\rr\Bell.cpp" />
+    <ClCompile Include="..\rr\Coupler.cpp" />
+    <ClCompile Include="..\rr\Gear.cpp" />
+    <ClCompile Include="..\rr\ModelLoaderRR.cpp" />
+    <ClCompile Include="..\rr\OnRails.cpp" />
+    <ClCompile Include="..\rr\Rail.cpp" />
+    <ClCompile Include="..\rr\RailCoord.cpp" />
+    <ClCompile Include="..\rr\RailMap45.cpp" />
+    <ClCompile Include="..\rr\RollingStock.cpp" />
+    <ClCompile Include="..\rr\Train.cpp" />
+    <ClCompile Include="..\rr\WheelPair.cpp" />
+    <ClCompile Include="..\TheApp.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\engine\Camera.h" />
+    <ClInclude Include="..\..\engine\Coords.h" />
+    <ClInclude Include="..\..\engine\DrawJob.h" />
+    <ClInclude Include="..\..\engine\FileLoader.h" />
+    <ClInclude Include="..\..\engine\Gabarites.h" />
+    <ClInclude Include="..\..\engine\geom2d\ArcXY.h" />
+    <ClInclude Include="..\..\engine\geom2d\LineXY.h" />
+    <ClInclude Include="..\..\engine\gltf\GLTFanim2nodesMap.h" />
+    <ClInclude Include="..\..\engine\gltf\GLTFanimation.h" />
+    <ClInclude Include="..\..\engine\gltf\GLTFnode.h" />
+    <ClInclude Include="..\..\engine\gltf\GLTFparser.h" />
+    <ClInclude Include="..\..\engine\gltf\GLTFskin.h" />
+    <ClInclude Include="..\..\engine\gltf\GLTFskinShader.h" />
+    <ClInclude Include="..\..\engine\gltf\json.hpp" />
+    <ClInclude Include="..\..\engine\gltf\tiny_gltf.h" />
+    <ClInclude Include="..\..\engine\Line3D.h" />
+    <ClInclude Include="..\..\engine\linmath.h" />
+    <ClInclude Include="..\..\engine\Material.h" />
+    <ClInclude Include="..\..\engine\MaterialAdjust.h" />
+    <ClInclude Include="..\..\engine\modeler\CoordOnLine.h" />
+    <ClInclude Include="..\..\engine\modeler\DirLight.h" />
+    <ClInclude Include="..\..\engine\modeler\Group01.h" />
+    <ClInclude Include="..\..\engine\modeler\GroupTransform.h" />
+    <ClInclude Include="..\..\engine\modeler\ModelBuilder.h" />
+    <ClInclude Include="..\..\engine\modeler\ModelBuilder1base.h" />
+    <ClInclude Include="..\..\engine\modeler\ModelLoader.h" />
+    <ClInclude Include="..\..\engine\modeler\ModelLoaderCmd.h" />
+    <ClInclude Include="..\..\engine\modeler\MyPolygon.h" />
+    <ClInclude Include="..\..\engine\modeler\MyPolygonRib.h" />
+    <ClInclude Include="..\..\engine\modeler\Switcher.h" />
+    <ClInclude Include="..\..\engine\modeler\TexCoords.h" />
+    <ClInclude Include="..\..\engine\modeler\Triangle01.h" />
+    <ClInclude Include="..\..\engine\modeler\Vertex01.h" />
+    <ClInclude Include="..\..\engine\modeler\VirtualShape.h" />
+    <ClInclude Include="..\..\engine\MyColor.h" />
+    <ClInclude Include="..\..\engine\SceneSubj.h" />
+    <ClInclude Include="..\..\engine\Shader.h" />
+    <ClInclude Include="..\..\engine\Shadows.h" />
+    <ClInclude Include="..\..\engine\stb_image.h" />
+    <ClInclude Include="..\..\engine\stb_image_write.h" />
+    <ClInclude Include="..\..\engine\Texture.h" />
+    <ClInclude Include="..\..\engine\TheTable.h" />
+    <ClInclude Include="..\..\engine\ui\Coords2D.h" />
+    <ClInclude Include="..\..\engine\ui\ProgressBar.h" />
+    <ClInclude Include="..\..\engine\ui\UISubj.h" />
+    <ClInclude Include="..\..\engine\utils.h" />
+    <ClInclude Include="..\..\engine\XMLparser.h" />
+    <ClInclude Include="..\..\p_windows\platform.h" />
+    <ClInclude Include="..\model_car\CarWheel.h" />
+    <ClInclude Include="..\rr\Bell.h" />
+    <ClInclude Include="..\rr\Coupler.h" />
+    <ClInclude Include="..\rr\Gear.h" />
+    <ClInclude Include="..\rr\ModelLoaderRR.h" />
+    <ClInclude Include="..\rr\OnRails.h" />
+    <ClInclude Include="..\rr\Rail.h" />
+    <ClInclude Include="..\rr\RailCoord.h" />
+    <ClInclude Include="..\rr\RailMap45.h" />
+    <ClInclude Include="..\rr\RollingStock.h" />
+    <ClInclude Include="..\rr\Train.h" />
+    <ClInclude Include="..\rr\WheelPair.h" />
+    <ClInclude Include="..\rr\Whistle.h" />
+    <ClInclude Include="..\TheApp.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

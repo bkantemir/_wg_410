@@ -1,0 +1,12 @@
+<group>
+	<mt_use="car-wire" lineWidth=0.5 >
+		<line>
+			<group>
+				<p pxyz="-1,0,0" />
+				<p dx=-0.5 dz=0.5 />
+				<p dz=3 r=0.5 />
+			</group>
+			<clone="reflect" xyz="1,0,0" />
+		</line>
+	</mt_use>
+</group>

@@ -1,0 +1,128 @@
+<setMaterial="car-body" valueOf="hi-gloss" />
+
+<setColor="car-body"  pickOneOf="ivory,m-gray-b,d-gray-b,ink-maroon,ink-maroon-dark" /> //,car-black,tbird-gray
+<setColor="car-body2" pickOneOf="ivory,m-gray-b,d-gray-b,ink-maroon,ink-maroon-dark,baby-green,car-black" />
+/*
+<if="sameColor" var1="car-body" var2="m-gray-b" >
+//<setVar="optN" pickOneOf="0,1,2" />
+//<if="==" var1="optN" val2="0" >
+	<setMaterial="car-body" valueOf="tin" />
+</if>
+*/
+//color scheme
+<if="sameColor" var1="car-body" var2="car-body2" >
+<setColor="car-wings" pickOneOf="ivory,ink-maroon,ink-maroon-dark,baby-green,car-black" /> //,m-gray-b,d-gray-b
+	<setVar="optN" pickOneOf="1,2" />
+	<if="==" var1="optN" val2="1" > //hide splitter
+	<element="2-tone-splitter" action=hide />
+	</if>
+<proceedTo="next-step" />
+</if>
+<setColor="car-wings" valueOf="car-body" />
+<label="next-step" />
+
+//<setColor="car-roof" valueOf="d-denim" />
+<setColor="car-roof" pickOneOf="d-gray-r,car-black,milk-coffee,car-body2,car-wings" />
+<if="sameColor" var1="car-roof" var2="baby-green" >
+<setColor="car-roof" pickOneOf="d-gray-r,car-black,milk-coffee" />
+</if>
+
+
+<setColor="salon" pickOneOf="#880011,#332222,#222233,car-roof" /> //,car-brown
+
+//rim
+<setVar="optN" pickOneOf="1,1,1,1,2" />
+<if="==" var1="optN" val2="1" > //chrome
+<setMaterial="rim" valueOf="chrome" />
+<setColor="rim-color" valueOf="#666666" />
+<proceedTo="next-step" />
+</if>
+<if="==" var1="optN" val2="2" > //gold
+<setMaterial="rim" valueOf="roman-gold" />
+<setColor="rim-color" valueOf="#825A00" />
+<proceedTo="next-step" />
+</if>
+<if="==" var1="optN" val2="3" > //red
+<setMaterial="rim" valueOf="gloss" />
+<setColor="rim-color" valueOf="#B00000" />
+<proceedTo="next-step" />
+</if>
+<label="next-step" />
+
+//spare
+<setMaterial="spare-lid" valueOf="car-body" />
+<setVar="optN" pickOneOf="1,2" />
+<if="==" var1="optN" val2="1" >
+<setColor="spare-lid" valueOf="car-wings" />
+<proceedTo="next-step" />
+</if>
+<setColor="spare-lid" valueOf="car-body2" />
+<label="next-step" />
+
+//spare placement
+<setVar="optN" pickOneOf="1,2" />
+<if="==" var1="optN" val2="1" >
+<element="spare1" action=unhide />
+<element="spare2" action=hide />
+	<if="sameColor" var1="car-body" var2="car-body2" >
+	<setColor="spare-lid" valueOf="car-wings" />
+	<proceedTo="next-step" />
+	</if>
+		<setVar="optN" pickOneOf="1,2" />
+		<if="==" var1="optN" val2="1" >
+		<setColor="spare-lid" valueOf="car-body" />
+		<proceedTo="next-step" />
+		</if>
+		<setColor="spare-lid" valueOf="car-body2" />
+<proceedTo="next-step" />
+</if>
+<element="spare1" action=hide />
+<element="spare2" action=unhide />
+<setColor="spare-lid" valueOf="car-wings" />
+<label="next-step" />
+
+//overwrite spare lid ?
+<setVar="optN" pickOneOf="1,2,2" />
+<if="==" var1="optN" val2="1" >
+<setMaterial="spare-lid" valueOf="matte" />
+<setColor="spare-lid" valueOf="car-roof" />
+</if>
+
+
+
+//extras
+<setVar="optN" pickOneOf="0,0,1" />
+<if="==" var1="optN" val2="1" >
+<element="fog-lights" action=unhide />
+<proceedTo="next-step" />
+</if>
+<element="fog-lights" action=hide />
+<label="next-step" />
+
+<setVar="optN" pickOneOf="0,0,1" />
+<if="==" var1="optN" val2="1" >
+<element="signal-lights" action=unhide />
+<proceedTo="next-step" />
+</if>
+<element="signal-lights" action=hide />
+<label="next-step" />
+
+<setVar="optN" pickOneOf="0,0,1" />
+<if="==" var1="optN" val2="1" >
+<element="mirrors" action=unhide />
+<proceedTo="next-step" />
+</if>
+<element="mirrors" action=hide />
+<label="next-step" />
+
+//roof
+<setVar="optN" pickOneOf="0,1" />
+<if="==" var1="optN" val2="0" >
+<element="roof0" action=unhide />
+<element="roof1" action=hide />
+<proceedTo="next-step" />
+</if>
+<element="roof0" action=hide />
+<element="roof1" action=unhide />
+<label="next-step" />
+

@@ -1,0 +1,30 @@
+
+<texture_as="whitenoise" src="/dt/mt/wn64_blur3.bmp"/>
+<texture_as="whitenoise2" src="/dt/mt/wn64_blur1.bmp"/>
+
+<mt_adjust_as="metal-wire" scope=app mt_type="wire" uColor="#666666" uAmbient=0.3 uSpecularPowerOf=10 uSpecularMinDot=0.85 uSpecularIntencity=1 />
+<mt_adjust_as="gold-wire"  scope=app mt_type="wire" uColor="#825A00" uAmbient=0.3 uSpecularPowerOf=10 uSpecularMinDot=0.85 uSpecularIntencity=1 />
+
+<mt_adjust_as="chrome" scope=app mt_type="mirror" uTex0_use="whitenoise" uTex0translateChannelN=0 uTex3_src="/dt/mt/chrome01.bmp" uSpecularIntencity=1 layer2as="" />
+<mt_adjust_as="roman-gold" scope=app mt_type="mirror" uTex0_use="whitenoise" uTex0translateChannelN=0 uTex3_src="/dt/mt/gold02roman.bmp" />
+
+<mt_adjust_as="clearcoat-pearl"    noShadow uBleach=0 scope=app mt_type="mirror" uAlphaFactor=0.6 uSpecularIntencity=0 uAmbient=0.7 uTex0_use="whitenoise2" uTex0translateChannelN=1 uTex3_src="/dt/mt/glass01.bmp" />
+<mt_adjust_as="clearcoat-gloss"    noShadow uBleach=0 scope=app mt_type="mirror" uAlphaFactor=0.7 uTex0_src="/dt/mt/wn32_256.bmp" uTex0translateChannelN=0 uTex3_src="/dt/mt/glass01_16.bmp" uAmbient=0.7 uSpecularIntencity=0 />
+<mt_adjust_as="clearcoat-plastic"  noShadow uBleach=0 scope=app mt_type="mirror" uAlphaFactor=0.4 uTex0_src="/dt/mt/wn32_256.bmp" uTex0translateChannelN=0 uTex3_src="/dt/mt/glass01_8.bmp" uAmbient=0.7 uSpecularIntencity=0 />
+<mt_adjust_as="clearcoat-tin"      noShadow uBleach=0 scope=app mt_type="mirror" uAlphaFactor=0.15 uSpecularIntencity=0 uAmbient=0.7 uTex0_use="whitenoise2" uTex0translateChannelN=1 uTex3_src="/dt/mt/glass01_2.bmp" />
+<mt_adjust_as="clearcoat-metallic" noShadow uBleach=0 scope=app mt_type="mirror" uAlphaFactor=0.4 uSpecularIntencity=0 uAmbient=0.7 uTex0_use="whitenoise2" uTex0translateChannelN=1 uTex3_src="/dt/mt/glass01_2.bmp" />
+
+<mt_adjust_as="gloss"    scope=app mt_type="phong" uAmbient=0.5 uSpecularIntencity=0.9 uSpecularMinDot=0.95 uSpecularMinDot2=0.99 uSpecularPowerOf=60 uBleach=0.1 uShadingK=1.5 layer2as="" /> //gloss
+<mt_adjust_as="hi-gloss" scope=app mt_type="phong" uAmbient=0.5 uSpecularIntencity=0.9 uSpecularMinDot=0.95 uSpecularMinDot2=0.99 uSpecularPowerOf=60 layer2as="clearcoat-gloss" uBleach=0.1 uShadingK=1.5 /> //gloss
+<mt_adjust_as="pearl"    scope=app mt_type="phong" uAmbient=0.5 uSpecularIntencity=0.8 uSpecularMinDot=0.7 uSpecularMinDot2=0.98 uSpecularPowerOf=12 layer2as="clearcoat-pearl" /> //pearl
+<mt_adjust_as="metal"    scope=app mt_type="phong" uAmbient=0.2 uSpecularIntencity=0.8 uSpecularMinDot=0.7 uSpecularPowerOf=12 layer2as="" /> //metal
+<mt_adjust_as="tin"      scope=app mt_type="phong" uAmbient=0.2 uSpecularIntencity=0.9 uSpecularMinDot=0.7 uSpecularMinDot2=0.98 uSpecularPowerOf=12 layer2as="clearcoat-tin" /> //tin
+<mt_adjust_as="metallic" scope=app mt_type="phong" uAmbient=0.2 uSpecularIntencity=2 uSpecularMinDot=0.95 uSpecularMinDot2=0.98 uSpecularPowerOf=60 layer2as="clearcoat-metallic" /> //metallic
+<mt_adjust_as="matte"    scope=app mt_type="phong" uAmbient=0.5 uSpecularIntencity=0 uBleach=1 layer2as="" /> //matte-wood
+<mt_adjust_as="plastic"  scope=app mt_type="phong" uAmbient=0.9 uSpecularIntencity=0.6 uSpecularMinDot=0.9 uSpecularMinDot2=0.98 uSpecularPowerOf=5 layer2as="" /> //plastic
+<mt_adjust_as="plastic-gloss" scope=app mt_type="phong" uAmbient=0.9 uSpecularIntencity=0.6 uSpecularMinDot=0.9 uSpecularMinDot2=0.98 uSpecularPowerOf=5 layer2as="clearcoat-plastic" /> //plastic
+<mt_adjust_as="satin"    scope=app mt_type="phong" uAmbient=0.65 uSpecularIntencity=0.4 uSpecularMinDot=0.89 uSpecularPowerOf=15 layer2as="" /> //satin
+<mt_adjust_as="leather"  scope=app mt_type="phong"  uAmbient=0.3 uSpecularIntencity=0.8 uSpecularMinDot=0.75 uSpecularPowerOf=15 layer2as="" /> //leather
+
+<mt_adjust_as="glass-plain" scope=app mt_type="mirror" noShadow uAmbient=0.7 uAlphaFactor=0.8 uSpecularIntencity=0 uTex0_use="whitenoise2" uTex0translateChannelN=2 uTex3_src="/dt/mt/glass01_2.bmp" />
+<mt_adjust_as="cabochon" scope=app mt_type="phong" uTranslucency=1 uColor="#aa0000" uAmbient=0.1 uSpecularIntencity=1.2 uSpecularMinDot=0.95 uSpecularPowerOf=20 />

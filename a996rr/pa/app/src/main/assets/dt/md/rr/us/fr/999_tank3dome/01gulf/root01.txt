@@ -1,0 +1,28 @@
+<model="36' 3 dome tank car" yearFrom=1935 />
+
+<include='../root00.txt'/>
+
+<for_element=tank>
+	<texture_as=logo src=gulf01.bmp />
+	<color_as=font uColor=#880000 />
+	<mt_save_as=font mt_use=satin uColor_use=font uTex1mask_use=logo uTex1alphaChannelN=0 sticker/>
+	<group>
+		<mt_adjust mt_use=font>
+			<a2mesh wh='12,2' xywh='65,0,191,24' all markedAs=body onThe=right px=16 py=-1.2 detachBy=0.1 />//gulf refining company
+			<a2mesh wh='5.3,5' xywh='0,0,64,64' all markedAs=body onThe=right px=16 py=2.5 detachBy=0.1 />//gulf round logo
+			<a2mesh wh='22,1.7' xywh='67,24,188,14' all markedAs=body onThe=right px=-17 py=3.8 detachBy=0.1 />//that good gulf
+			<a2mesh wh='17,1.9' xywh='129,41,126,13' all markedAs=body onThe=right px=-17 py=2 detachBy=0.1 />//no nox
+			<a2mesh wh='12,2' xywh='65,39,63,16' all markedAs=body onThe=right px=-22 py=-0.2 detachBy=0.1 />//GATX 
+
+			<a2mesh wh='12,2' xywh='65,0,191,24' all markedAs=body onThe=left px=16 py=-1.2 detachBy=0.1 />//gulf refining company
+			<a2mesh wh='5.3,5' xywh='0,0,64,64' all markedAs=body onThe=left px=16 py=2.5 detachBy=0.1 />//gulf round logo
+			<a2mesh wh='22,1.7' xywh='67,24,188,14' all markedAs=body onThe=left px=-17 py=3.8 detachBy=0.1 />//that good gulf
+			<a2mesh wh='17,1.9' xywh='129,41,126,13' all markedAs=body onThe=left px=-17 py=2 detachBy=0.1 />//no nox
+			<a2mesh wh='12,2' xywh='65,39,63,16' all markedAs=body onThe=left px=-22 py=-0.2 detachBy=0.1 />//GATX 
+		</mt_adjust>
+		<mt_adjust mt_use=font uTex1mask_src='/dt/md/rr/us/txt01.bmp'>
+			<a2mesh wh='6,4' xywh='0,48,128,47' all markedAs=body onThe=right px=26 py=1 detachBy=0.1 />//text
+			<a2mesh wh='6,4' xywh='0,48,128,47' all markedAs=body onThe=left px=26 py=1 detachBy=0.1 />//text
+		</mt_adjust>
+	</group >
+</for_element>

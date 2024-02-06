@@ -1,0 +1,34 @@
+//wheel
+
+<number_as="sectR" val=24 />
+
+<color_as="spare-lid" uColor="#ff0000" />
+<mt_use="hi-gloss" mt_name="spare-lid" uColor_use="spare-lid" />
+
+<group>
+	//tire lid
+	<vs="cylinder" whl="10,10,3" sectR_use="sectR" />
+	<a="wrap" xywh2nm_GL="0,0,1,40" flip2nm=90 sectZ=3 />
+	<do scale="1.2,1.2,2" fromZ=-1.1 toZ=1.1 />
+	//wall
+	<group>
+		<a="wrap" />
+		<do scaleTo="7,7,x" fromZ=0 />
+	</group scale="1,1,0" pz=1.5 >
+	<clone ay=180 />
+
+	<do="calculate normals" />
+	<do="normalsTo" xyz="0,0,10" fromZ=0.9 fromRZ=3.4 toRZ=3.6 />
+	<do="merge normals" />
+	
+<mt_use="metal-wire" mt_name="car-wire" /> 
+	<mt_use="car-wire" noShadow lineWidth=0.0333 /> // 0.4/12
+	<line>
+		<ring whl="12.1,12.1,0" sectR_use="sectR" />
+	</line>
+
+	<include="rim01.txt" scale=7 />
+
+</group scale=0.0833 > //scale 1/12
+
+//<element="rim01.txt" scale=0.5833 /> //scale 7/12

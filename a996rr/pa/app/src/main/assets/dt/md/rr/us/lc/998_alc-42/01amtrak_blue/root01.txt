@@ -1,0 +1,7 @@
+<model="Siemens ALC-42 Charger Amtrak" yearFrom=2015 />
+
+
+//<color_as=gear uColor_use=frame />
+//<mt_save_as=gear mt_use=frame />
+
+<include='../root00.txt' />

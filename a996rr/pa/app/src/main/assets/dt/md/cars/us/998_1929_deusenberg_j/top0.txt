@@ -1,0 +1,62 @@
+<elementProps opaque />
+<texture_as="tx1" src="body01.bmp" ckey="#00ff00"/>
+
+<color_as="car-roof" uColor_use="car-black" />
+<mt_use="matte" mt_name="car-roof" uColor_use="car-roof" />
+
+	<mt_use="car-roof" />
+	<group>
+				<group> //main
+					<vs="box-tank" whl="22,2.5,2" extX=0.2 extY=0.2 sectR=1 sectX=4 />
+						<a="front v" />
+						<a="top only" mark="top-flat" />
+						<mt_adjust uTex2nm_use=tx1 >
+							<a="left v,right v" xywh2nm="1.1,12,1,6.8" />
+						</mt_adjust>
+				</group align=front > //main
+
+				<group> //main back
+					<vs="box-tank" whl="22,2.5,2" extX=0.2 extY=0.2 extB=0.2 sectR=1 sectX=4 sectZ=2 />
+						<a="top only" mark="top-flat" />
+						<mt_adjust uTex2nm_use=tx1 >
+							<a="back all,left v,right v" xywh2nm="1.1,12,1,6.8" />
+						</mt_adjust>
+					<do scaleTo="18,x,x" applyTo="back pow2" />
+				</group pz=-3 > //main back
+
+				<group> //front sides
+					<group> //right side
+						<vs="box-tank" whl="1,2.5,4" extX=0.2 extY=0.2 extF=0.6 sectR=1 />
+						<a="front all,left v,top only" />
+						<mt_adjust uTex2nm_use=tx1 >
+							<a="right v" xywh2nm="0.1,12,2,6.8" />
+						</mt_adjust>
+					</group align=front px=10.5 > //right side
+					<clone=reflect xyz="1,0,0" />
+				</group align=back > //front sides
+
+		<do py=0.5 applyTo="midX root2" />
+		<do scaleTo="x,1.5,x" applyTo="front" />
+
+		<do="calc normals" />
+		<do="normalsTo" all markedAs="top-flat" xyz="0,50,2" />
+		
+		<do="merge normals" />
+		
+		<group>
+			<mt_adjust mt_type=wire lineWidth=0.35 noShadow />
+			<line>
+				<group>
+					<p pxyz="-10.5,5,0" />
+					<p dy=-5.6 r=1 />					
+					<p dy=-2 dx=0.6 r=1 />					
+					<p dy=-0.5 dx=4 r=1 />					
+				</group>
+				<clone=reflect xyz="1,0,0" />
+			</line>
+			<line2mesh all onThe="top" detachBy=0.2 />
+		</group>
+
+	</group ax=3 >
+	//</group ax=90 py=3.5 pz=-3 >
+	

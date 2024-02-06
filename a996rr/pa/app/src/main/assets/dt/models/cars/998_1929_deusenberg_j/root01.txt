@@ -1,0 +1,1124 @@
+<model="1929 Deusenberg J Sport Phaeton" />
+
+<elementProps opaque onDeploy="ondeploy.txt" />
+
+<include="/dt/mt/materials.txt" />
+<include="/dt/md/cars/car-colors.txt" />
+
+<texture_as="tx1" src="body01.bmp" ckey="#00ff00"/>
+
+
+<mt_use="metal-wire" mt_name="car-wire" /> 
+<mt_use="chrome" mt_name="car-chrome" /> 
+
+<color_as="chrome-color" uColor="#666666" />
+
+//<mt_use="hi-gloss" mt_name="car-body" uColor="#ff0000" /> 
+<mt_use="tin" mt_name="car-body" uColor="#ff0000" /> 
+
+<color_as="salon" uColor="#880011" />//scope=model />
+<mt_use="leather" mt_name="salon" uColor_use="salon" uTex2nm_src="../999_1935_deusenberg_ssj/sits01nm.bmp" uTex2nm_glRepeatH=GL_REPEAT uTex2nm_glRepeatV=GL_CLAMP_TO_EDGE /> //leather
+
+//wheels
+
+<element="../999_1935_deusenberg_ssj/wheel01.txt" scale=12 pxyz="-13,6,26" ay=180 /> //front passenger // class="CarWheel"
+<element="../999_1935_deusenberg_ssj/wheel01.txt" scale=12 pxyz="13,6,26" /> //front driver
+<element="../999_1935_deusenberg_ssj/wheel01.txt" scale=12 pxyz="-13,6,-26" ay=180 /> //rear passenger
+<element="../999_1935_deusenberg_ssj/wheel01.txt" scale=12 pxyz="13,6,-26" /> //rear driver
+
+<color_as="car-body" uColor_use="yellow-orange" />//scope=model />
+<color_as="car-body2" uColor_use="yellow-lemon" />//scope=model />
+<color_as="car-wings" uColor_use="car-body" />//scope=model />
+
+//body
+<mt_adjust_as="under_side" name_too mt_use="matte" uColor="#333333" layer2as="" />
+
+<group>
+
+	//front axis
+	<mt_type="phong" uColor="#222222" uSpecularIntencity=0 />
+	<vs=box whl="6,1.5,1.5" />
+	<a="front,back,top" pxyz="-8.5,0,26" />
+	<a="front,back,top" pxyz=" 8.5,0,26" />
+
+	<mt_use="car-body" uColor_use="car-wings" />
+
+	//front driver wing
+	<group>
+		<group>
+			<mt_type=flat uColor="#00ff00" lineWidth=0.5 >
+				<line mark="guideline2" dontRender >
+					<ring whl="17,15,0" sectR=6 angleFromTo="140,50" />
+					<p pxyz="14,1,0" />
+					<p curve />
+					<p pxyz="24,-2,0" />
+					<p dx=1 />
+				</line>
+			</mt_type>
+		</group ay=90 >
+		<group mark="front wing" >
+			<vs=box-tank whl="4,0,1" extL=1 extU=1 sectR=2 side=",under_side" />
+			<a="top all" />
+			<group2line="guideline2" />
+		</group>
+		<group> //inner fender
+			<vs=box whl="2,0,1" side=",under_side" />
+			<a="top" pxyz="3,1,0" sectX=2 />
+			<a="top" pxyz="5,1,0" />
+			<group2line="guideline2" toL=28 />
+		</group>
+		<group mark="front wing"> //front tip
+			<vs=box-tank whl="4,0,1.5" extR=1 extU=1 sectR=2 /> //side=",under_side" />
+			<a="top all" />
+			<vs=box whl="2,0,1.5" />//side=",under_side" />
+			<a="top" pxyz="-3,1,0" sectX=2 />
+			<do align=back />
+			<do toX=-2 scale="1,1,0.1" applyTo="left pow2" />
+			<do fromX=2 scale="1,1,0.1" applyTo="bottom pow2" />
+			<do py=0.3 applyTo="front pow2" />
+			<do ay=180 />
+			<group2line="guideline2" applyTo=front />
+		</group>
+
+		//bend inner fender
+		<do toX=-1 applyTo="left pow2" scale="1,0,1" py=0.5 />
+		<do toX=-1 toZ=10 applyTo="left front" px=-3 pz=-6 />
+		<do toX=-2.5 applyTo="left back" px=2 pz=5 />
+
+		<do="calculate normals" />
+		<do="merge normals" />
+
+		//front wing decor line
+		<group>
+			<mt_use="car-wire" lineWidth=0.3 noShadow >
+				<line>
+					<p pxyz="0,9,0" />
+					<p py=-25 />
+				</line>
+				<line2mesh all markedAs="front wing" onThe="top" detachBy=0.1 />
+			</mt_use>
+		</group>
+
+	</group pxyz="13,0,26" >
+	<clone="reflect" xyz="1,0,0" />
+
+	//rear driver wing
+	<group>
+		<group>
+			<mt_type=flat uColor="#00ff00" lineWidth=0.5 >
+				<line mark="guideline3" dontRender >
+					<p pxyz="-7,-2,0" />
+					<ring whl="14,15,0" sectR=10 angleFromTo="180,5" />
+					<p curve />
+					<p pxyz="10,-2,0" />
+				</line>
+			</mt_type>
+		</group ay=90 >
+		<vs=box-tank whl="4,0,1" extX=1 extD=1 sectR=2 />
+		<group mark="rear wing" >
+			<a="bottom all" />
+			<group2line="guideline3" />
+		</group>
+		<group >
+			<a="bottom all" side="in:under_side" />
+			<group2line="guideline3" />
+		</group>
+		<group> //rear tip
+			<vs=box-tank whl="4,0,1" extX=1 extU=1 sectR=2 /> //side=",under_side" />
+			<a="top all" />
+			<do align=front />
+			<do scale="1,1,0.1" applyTo="bottom pow2" />
+			//<do py=0.3 applyTo="front pow2" />
+			<do ay=180 />
+			<group2line="guideline3" applyTo=back />
+		</group>
+				
+		<do="calculate normals" />
+		<do="merge normals" />
+
+		<group>
+			<vs=cylinder whl="15.1,16.1,0" sectR=10 angleFromTo="180,0" />
+			<a="back" side=",under_side" />
+		</group ay=-90 px=-3 >
+
+		//decor lines
+		<group>
+			<mt_use="car-wire" lineWidth=0.3 noShadow >
+			<group>
+				<line>
+					<p pxyz="0,-1,0" />
+					<p py=8 />
+				</line>
+				<line2mesh all markedAs="rear wing" onThe="front" detachBy=0.1 />
+			</group>
+			<group>
+				<line>
+					<p pxyz="-1.2,-1,0" />
+					<p py=7 />
+				</line>
+				<line2mesh all markedAs="rear wing" onThe="front" detachBy=0.1 />
+			</group>
+			<clone="reflect" xyz="1,0,0" />
+			</mt_use>
+		</group>
+	</group pxyz="13,0,-26" >
+	<clone="reflect" xyz="1,0,0" />
+
+	//side step
+	<group>
+		<mt_type=phong uColor="#222222" uSpecularIntencity=0.3 >
+			<vs="box-tank" whl="4,0,20" extR=1 extU=1 />
+			<a="top all" align=front />
+			<do="merge normals" />
+		</mt_type>
+		//decor lines on steps
+		<mt_use="car-wire" lineWidth=0.3 noShadow >
+			<group>
+				<group>
+					<short p0="0,1.1,0" dz=-9 />
+				</group>
+				<clone px=-1.2 />
+				<clone px=2.4 />
+			</group>
+			<clone pz=-10 />
+
+		</mt_use>
+	</group pxyz="13,-2,1" >
+	<clone="reflect" xyz="1,0,0" />
+
+
+	<group> //frame
+		<group>
+			<vs="box" whl="4,3,27" />
+			<a="top" />
+			<a="right" />
+			//side box lid
+			<group>
+				<mt_adjust uTex2nm_use="tx1" noShadow >
+					<vs="box" whl="4.1,3,0.5" >
+						<a="right" xywh2nm="1,1,2,1" pz=6 />
+						<a="right" xywh2nm="1,1,2,1" pz=-6 />
+						//handle
+						<a="right" xywh2nm="4,1,6,2" whl="x,0.6,3" py=1 pz=0 />
+					</vs>
+				</mt_adjust >
+			</group pz=-3 px=0 />
+			<group> //front
+				<a="top" length=22 />
+				<mt_adjust layer2as="" >
+					<a="front" length=22 />
+				</mt_adjust>
+				<do pz=-4 toX=0 applyTo="front only" />
+				
+				<mt_type="phong" uColor="#888888" uSpecularIntencity=0.8 uSpecularPowerOf=12 uSpecularMinDot=0.8 uAmbient=0.2 uTex2nm_use="tx1" >
+					//<a="right" length=22 xywh2nm="1,3,1,8" />
+					<a="left" side="in" length=22 xywh2nm="1,3,1,8" />
+				</mt_type>
+				<do px=-5 applyTo=front />
+				<do="calculate normals" />
+			</group pz=24.5 >
+		</group pxyz="9,-0.5,-6" >
+		<clone="reflect" xyz="1,0,0" />
+		//frame-front tip
+		<group> 
+			<mt_adjust layer2as="" >
+				<group> 
+					<vs="box" whl="0.5,3,5" />
+					<a="left,right,top,front" />
+					<do py=-2 applyTo="front top only" />
+					<do="calculate normals" />
+				</group align="back left" >
+				<group> 
+					<vs="box-tank" whl="1,0,0" extU=1 extF=5 sectR=3 />
+					<a="left all,top all" />
+					<do="calculate normals" />
+				</group align="back right" py=-1.5 >
+			</mt_adjust>
+		</group px=5.5 py=-0.5 pz=29 >
+		<clone="reflect" xyz="1,0,0" />
+
+		<mt_use="metal-wire" lineWidth=0.6 >
+			<short p0="-5,-1.5,32" dx=10 />
+		</mt_use>
+		
+		//under trunk
+		<mt_use="car-body" uColor_use="car-wings"/>
+		<group>
+			<vs="box-tank" whl="18,2,6" ext=1 extF=0 extD=0 sectR=2 />
+			<a="top all,back h,left,right" />
+			<do pz=-0.7 applyTo=bottom toZ=0 />
+				<do="calculate normals" />
+				<do="merge normals" />
+		</group py=-1 pz=-32.5 > 
+		
+		//wire bumper front
+		<mt_use="car-wire" lineWidth=0.8 />
+		<group>
+			<line> //bottom
+				<group>
+					<p pxyz="-15,-0.6,0" />
+					<p dx=3 pz=2 r=1 />
+				</group>
+				<clone="reflect" xyz="1,0,0" />
+			</line>
+			<group> //middle
+				<mt_adjust uColor="#333333" uSpecularIntencity=0.4 >
+				<line>
+					<p pxyz="-15,0,0" />
+					<p dx=10 />
+					<p px=0 pz=2 />
+				</line>
+				</mt_adjust>
+			</group>
+			<clone="reflect" xyz="1,0,0" />
+			<group> //top
+				<line>
+					<p pxyz="-15,0.6,0" />
+					<p dx=3 pz=2 r=1 />
+					<p dx=2 r=1 />
+					<p px=-5 dy=1 r=1 />
+					<p px=0 py=0.6 />
+				</line>
+			</group>
+			<clone="reflect" xyz="1,0,0" />
+			<line> //mid vertical
+				<group>
+					<p pxyz="0,-1.5,1.5" />
+					<p pz=2.5 r=1 />
+				</group>
+				<clone="reflect" xyz="0,1,0" />
+			</line>
+		</group pz=34 py=-1 >
+
+		//wire bumper rear
+		<group>
+			<group>
+				<line> //bottom
+					<group>
+						<p pxyz="-15,-0.6,0" />
+						<p dx=3 pz=2 />
+					</group>
+					<clone="reflect" xyz="1,0,0" />
+				</line>
+			</group>
+			<clone="reflect" xyz="0,1,0" />
+			
+			<line> //mid vertical
+				<group>
+					<p pxyz="0,-1.5,1.5" />
+					<p pz=2.5 r=1 />
+				</group>
+				<clone="reflect" xyz="0,1,0" />
+			</line>
+			
+			<mt_adjust uColor="#333333" uSpecularIntencity=0.4 >
+				<group> //middle
+					<line>
+						<p pxyz="-15,0,0" />
+						<p dx=10 />
+						<p px=0 pz=2 />
+					</line>
+				</group>
+				<clone="reflect" xyz="1,0,0" />
+				<short p0=" 8,0,0" dz=-2 />
+				<short p0="-8,0,0" dz=-2 />
+			</mt_adjust>
+
+		</group ay=180 pz=-38.5 py=-1 >
+
+	</group> //frame
+	
+	<group> //body
+		//hood
+		<mt_use="car-body" uTex0_use=tx1 uTex0translateChannelN=4 uColor1_use="car-body" uColor2_use="car-body2"/>
+		<group >
+			<vs="box-tank" whl="0,10,20" extX=7.5 extU=2 sectR=4 />
+			<group > //hood front
+				<a="top all" align=bottom mark="2-tone,2-tone hood" />
+				<do scaleTo="x,1,x" applyTo=front />
+				//top line
+				<mt_use="car-wire" lineWidth=0.4 noShadow >
+					<short p0="0,2.1,-10" p1="0,1.1,10" />
+				</mt_use>
+
+			</group py=5>
+			<a="left,right" mark="2-tone,2-tone side" />
+			<do scaleTo="9,x,x" applyTo=front />
+			
+			<do="calculate normals" />
+			<do="normalsD" xyz="0,-0.2,0" toY=0.1 />
+			<do="merge normals" />
+
+		</group align=bottom pz=18 > //hood front
+		
+		<group > //hood-back + salon			
+			<group > //hood-back
+				<vs="box-tank" whl="0,10,4" extX=7.5 extU=2 sectR=4 />
+				<a="top all" mark="2-tone,2-tone hood" />
+				<a="left" mark="2-tone,2-tone side" />
+				<a="right" mark="2-tone,2-tone side" />
+
+				//dashboard
+				<group >
+					<mt_type=phong uColor="#B25217" >
+						<a="back" height=3 extX=7.4 sizeD="-0.1,-0.1,0" />
+					</mt_type>
+
+					<group> //speedometers
+						<vs=cylinder whl="3,3,0" sectR=10 />
+						<mt_type=phong uColor="#eeeeee" noShadow >
+							<a=back />
+						</mt_type>
+						<mt_use="car-wire" lineWidth=0.4 noShadow >
+							<line>
+								<ring whl="3,3,-0.3" sectR=10 />
+							</line>
+						</mt_use>
+					</group pz=-2.1 px=2.8 py=1 >
+					<clone px=-3.6 />
+					<group> //small speedometers
+						<vs=cylinder whl="1.5,1.5,0" sectR=8 />
+						<mt_type=phong uColor="#eeeeee" noShadow >
+							<a=back />
+						</mt_type>
+						<mt_use="car-wire" lineWidth=0.4 noShadow >
+							<line>
+								<ring whl="1.5,1.5,-0.3" sectR=8 />
+							</line>
+						</mt_use>
+					</group pz=-2.1 px=-3.5 py=0.4 >
+					<clone px=9 />
+					
+					<do pz=1 applyTo=top />
+				</group pz=0.3 py=3.5 >
+			</group align=back > //hood-back
+		
+			//salon
+			<group>
+				<vs="box-tank" whl="14,10,12" extX=0.5 extU=0.7 sectZ=3 sectR=1 />
+				<a="right v,left v" mark="2-tone,2-tone side" />
+
+				//inner doors / leather
+				<group>
+					<vs="box-tank" whl="0,10,11.9" extR=0.5 extL=1 extU=0.7 sectZ=3 sectR=1 />
+					<group mark="" >
+						<mt_use=salon > //leather
+							<a="left v" xywh2nm="0,-4,56,40" height=9.9 mark="" sectR=2 />
+						</mt_use>
+ 					</group>
+				</group px=7 >
+				<clone="reflect" xyz="1,0,0" />
+
+			</group align=front >
+
+			//legs room
+			<group mark="" >
+				<vs="box" whl="15,6.8,3" />
+				<a="front,left,right,bottom" align=back side="in:under_side" />
+				<do scale="0.8,0.8,1" applyTo="front only" />
+				<a="bottom" align=front length=8 side="in:under_side" />
+			</group pxyz="0,-1.4,0" >
+
+			<do scaleTo="22,x,x" applyTo="back root2" />
+			
+			<group> //salon back
+				<mt_use="car-body" uColor_use="car-body" />
+				<vs="box-tank" whl="14,10,18" extX=0.5 extU=0.7 sectR=1 />
+				<a="right v,left v" mark="1-tone side" />
+
+				//inner doors / leather
+				<group>
+					<vs="box-tank" whl="0,10,18" extR=0.5 extL=1 extU=0.7 sectZ=3 sectR=1 />
+					<group mark="" >
+						<mt_use=salon > //leather
+							<a="left v" xywh2nm="0,-4,72,40" height=9.9 mark="" sectR=2 />
+						</mt_use>
+					</group>
+				</group px=7 >
+				<clone="reflect" xyz="1,0,0" />
+				<do scaleTo="22,x,x" />
+				
+				<vs="box-tank" whl="18,10,0" extX=2 extB=2 sectR=2 />
+				<a="back h" pz=-9 />
+				
+				//legs room
+				<group>
+					<vs="box" whl="20,9,10" />
+					<a="front,bottom" align=back side="in:under_side" />
+				</group pz=-4 >
+				
+			</group pz=-21 > //salon back
+
+			<do="calculate normals" />
+			<do="merge normals" />
+			<do="normalsD" xyz="0,-0.2,0" toY=0.1 />
+			
+			<group> //salon top/windshield panel
+				<vs="box-tank" whl="16,0,6" extX=2.3 extU=0.5 sectR=3 sectX=5 />
+				<a="top all" mark="1-tone top" />
+				<do scaleTo="x,x,9" applyTo="bottom pow2" />
+				<a="back,front" />
+				<do py=0.5 applyTo="midX root2" fromY=0 />
+				<do="calculate normals" />
+				<do="merge normals" />
+			</group py=5.7 pz=-17 > //salon top/windshield panel
+			
+		</group align=bottom pz=4 > //hood-back + salon
+
+		//paint 2-tone
+		<mt_use="car-body" uTex0_use=tx1 uTex0translateChannelN=4 uColor1_use="car-body" uColor2_use="car-body2"/>
+		<a2group=top all markedAs="2-tone hood" xywh="106,-58,150,116" flip=-90 />		
+		<a2group=right all markedAs="2-tone side" xywh="25,59,231,69" />
+
+		<element name="2-tone-splitter" >
+			//2-tone split wire-line			
+			<mt_use="car-wire" lineWidth=0.3 noShadow />
+			//<mt_type="flat" lineWidth=0.1 noShadow uColor="#800080" />
+			<group>
+				<line>
+					<p pxyz="-28,0,0" />
+					<ring whl="20,7,0" sectR=16 angleFromTo="90,-70" align=top />
+				</line>
+				//<do align="right" />
+				<line2mesh all markedAs="2-tone" onThe="right" az=-17.5 ax=-50 px=-9 py=1 detachBy=0.1 />
+			</group >
+			<clone="reflect" xyz="1,0,0" />
+		</element>
+
+		//grill
+		<mt_use="car-chrome" />
+		<group>
+			<group>
+				<vs="box-tank" whl="0,10,1" extU=1 extR=4.5 extD=4 sectR=4 />
+				<a="right all" />
+				<do pz=1 fromZ=0 applyTo=left />
+				<do="calculate normals" />
+				<do="merge normals" />
+				<group>
+					<a="right all" length=0.4 />
+
+					<mt_use="metal" uColor_use="chrome-color" uTex2nm_use="tx1" >
+					//<mt_use="metal" uColor="#825A00" uTex2nm_use="tx1" >
+						<a="front" length=0.4 xywh2nm="4,4.5,11,0.1" />
+					</mt_use>
+					
+					<do sizeD="-1,-2,0" applyTo="front pow2" />
+					<do pz=1 applyTo=left />
+					<do="calculate normals" />
+					<do="merge normals" />
+				</group pz=0.7 >
+			</group>
+			<clone="reflect" xyz="1,0,0" />
+			//hole
+			<mt_adjust uTex2nm_use=tx1 noShadow >
+				<a=front xywh2nm="3,6,8,8" vs=box whl="2.5,2.5,0" pxyz="0,-6.5,2" />
+			</mt_adjust>
+			
+			//emblem
+			<mt_use="car-wire" lineWidth=0.4 />
+			<group>
+				<short p0="0,0,0" dz=-3 dy=-1 />
+				<short dy=-2 />
+				<short p0="0,0,0" dz=-5 dx=-1 dy=0.6 />
+				<short p0="0,0,0" dz=-5 dx=1 dy=0.6 />
+			</group pz=4 py=9 >
+			
+			//gold emblem
+			<texture_as="logo_nm" src="../999_1935_deusenberg_ssj/logo02nm.png" ckey="#00ff00" />
+			<mt_use="roman-gold" uTex2nm_use="logo_nm" noShadow />
+			<group>
+				<vs="box-tank" whl="0,2.5,0" extF=0.3 extX=3 />
+				<a="front all" xywh2nm="0,0,256,79" />
+				<do="normalsFrom" xyz="0,0,-10" />
+			</group pz=1.6 py=5 >
+
+		</group pz=28.5 py=5 >
+
+
+		//pipes left panel
+		//<mt_use=metal uColor=#aaaaaa  uTex2nm_use="tx1" noShadow />
+		<mt_use="car-chrome" uTex2nm_use="tx1" noShadow />
+		<a2mesh wh="16,4" xywh2nm="0,42,64,16" all markedAs="2-tone side" onThe="left" py=6.5 detachBy=0.05 px=19 />
+		
+		//pipes
+		<texture_as="pipe01" src="../999_1935_deusenberg_ssj/pipe01nm.bmp" glRepeatH=GL_REPEAT glRepeatV=GL_REPEAT />
+		<group>
+			<group>
+				<mt_type=flat uColor="#00ff00" lineWidth=0.5 />
+				<line mark="guideline1" dontRender >
+					<p pxyz="0,0,0" />					
+					<p dx=-3 r=1 />
+					<p dx=-1.5 dy=-4 r=1 />
+					<p dy=-6 dz=-2 r=3 />
+					<p dz=-2 dx=4 />
+				</line>
+				<lastLineTexure vStep2nm_GL=1.8 />
+				
+				<group>
+					<vs=cylinder whl="1.5,1.5,1" sectR=6 />
+					/*
+					<mt_use=metal uColor=#aaaaaa uTex2nm_use="pipe01" />
+						<a="wrap" xywh2nm_GL="0,0,1,1" />
+					*/
+					<mt_use="car-chrome" />
+						<a="wrap" />
+
+					<group2line="guideline1" />
+				</group>
+			</group >
+			<clone mark="pipe2" />
+			<clone mark="pipe3" />
+			<clone mark="pipe4" />
+
+			<do all markedAs="pipe2" pz=4  px=0.5 ax=5  scale="1,1.04,1" />
+			<do all markedAs="pipe3" pz=8  px=1   ax=10 scale="1,1.08,1" />
+			<do all markedAs="pipe4" pz=12 px=1.5 ax=15 scale="1,1.12,1" />
+			
+			<do="calc normals" />
+			<do="merge normals" />
+		</group pxyz="-6,6.5,13" >
+
+		<mt_use=salon />
+		<group>
+			//salon sits
+			<group>
+				<vs="box-tank" whl="16,0,7" extX=1 extY=1 extF=1 sectR=2 />
+				<a="top all" xywh2nm="0,-6,64,40" flip=180 />
+			</group ax=-10 pz=5 >
+			//salon sits back
+			<group>
+				<vs="box-tank" whl="17,5,0" extX=1 extY=1.5 extZ=1.5 sectR=3 sectX=5 />
+				<mt_adjust uTex2nm_src="" >
+					<a="top all" />
+				</mt_adjust >
+				<a="front all noNrow" xywh2nm="0,-10,72,56" />
+				<do py=0.5 applyTo="midX root2" fromY=0 />
+				//<do pz=-0.5 applyTo="midX root2" />
+				<do="calc normals" />
+				<do="merge normals" />
+			</group ax=-20 py=3.5 pz=0.5 >
+		</group py=4 pz=-8.5 >
+		<clone pz=-17 />
+
+		//roof
+		<element="top0.txt" name="top0" pxyz="0,18,-29" />
+		<element="top1.txt" name="top1" pxyz="0,18,-29" />
+		<element="top2.txt" name="top2" pxyz="0,18,-29" />
+		
+	</group py=1 pz=-2 > //body
+	
+	//headlights
+	<group>
+		<mt_use="car-wire" lineWidth=0.5 />
+		<line>
+			<group>
+				<p pxyz="-12,0,0" />
+				<p pxyz="-1,-0.5,0" />
+			</group >
+			<clone="reflect" xyz="1,0,0" />
+		</line>
+		
+		//headlights
+		<group>
+			<mt_use="car-chrome" />
+			<vs="cap" whl="6,6,3" sectR=12 sectZ=2 />
+			<a=wrap ay=180 />
+			<do="calculate normals" />
+			<do="merge normals" />
+			<mt_use="car-wire" lineWidth=0.5 noShadow />
+			<line>
+				<ring whl="6,6,0.3" sectR=12 />
+			</line>
+			//inner
+			<group>
+				<mt_use="chrome" />
+				<a=wrap sectZ=1 length=0 />
+				<do="normalsTo" xyz="0,0,4" />
+			</group>
+			
+			<group>
+				<mt_type="flat" uColor="#222222" noShadow />
+				<a=wrap whl="2,2,0" sectZ=1 length=0 />
+			</group pz=0.05 >
+			
+			<group> //outer glass
+				<mt_type="mirror" uAmbient=0.6 uAlphaFactor=0.9 uSpecularIntencity=0.9 uTex0_use="whitenoise2" uTex0translateChannelN=0 uTex3_src="/dt/mt/glass01_8.bmp" noShadow />
+				<a=front sectZ=2 length=1 />
+				<do="calculate normals" />
+				<do="merge normals" />
+			</group pz=0.1 >
+		</group pxyz="6,3,1" >
+		<clone=reflect xyz="1,0,0" /> //hearlight
+
+		//klaxon
+		<group>
+			<mt_use="car-chrome" />
+			<vs="box" whl="2,2,2" />
+			<a="front,back,top" align=front />
+			<group> //horn
+				<vs="cylinder" whl="1,1,3" sectR=8 sectZ=4 side="," />
+				<a=wrap />
+				<mt_type="flat" uColor="#222222" noShadow />
+				<a=front pz=-1 />
+				<do scaleTo="2.5,2.5,x" applyTo="front pow3" />
+				<do="calculate normals" />
+				<do="merge normals" />
+			</group align=back >
+
+			<mt_use="car-wire" lineWidth=0.3 noShadow />
+			<line>
+				<ring whl="2.6,2.6,6.2" sectR=8 />
+			</line>
+
+		</group pxyz="6,-1,0" >
+		<clone=reflect xyz="1,0,0" /> //klaxon
+
+	</group pxyz="0,5,29" > //headlights
+
+	<element name="fog-lights" opaque >
+		<mt_use="car-wire" lineWidth=0.6 /> //uColor="#ffffff" />
+		<group>
+			<short p0="-4,0,0" dy=3 dz=1.5 />
+			<short p0=" 4,0,0" dy=3 dz=1.5 />
+			<short p0="-6,3,1.5" dx=12 />
+			<tip=start />
+			<tip=end />
+			<group>
+				<mt_use="car-chrome" />
+				<vs="cap" whl="4,4,2" sectR=8 sectZ=2 />
+				<a=wrap ay=180 />
+				<do="calculate normals" />
+				<do="merge normals" />
+				<mt_use="car-wire" lineWidth=0.5 noShadow />
+				<line>
+					<ring whl="4,4,0.3" sectR=8 />
+				</line>
+				//inner
+				<group>
+					<mt_use="chrome" />
+					<a=wrap sectZ=1 length=0 />
+					<do="normalsTo" xyz="0,0,4" />
+				</group>
+				
+				<group>
+					<mt_type="flat" uColor="#222222" noShadow />
+					<a=wrap whl="2,2,0" sectZ=1 length=0 />
+				</group pz=0.05 >
+				
+				<group> //outer glass
+ 					<mt_type="mirror" uAmbient=0.6 uAlphaFactor=0.9 uSpecularIntencity=0.9 uTex0_use="whitenoise2" uTex0translateChannelN=0 uTex3_src="/dt/mt/glass01_8.bmp" noShadow />
+					<a=front sectZ=2 length=1 />
+					<do="calculate normals" />
+					<do="merge normals" />
+				</group pz=0.1 >
+			</group pxyz="2.5,5,2" >
+			<clone="reflect" xyz="1,0,0" />
+		</group pxyz="0,-2,32" >
+	</element>
+		
+	<mt_use="car-wire" lineWidth=0.3 noShadow />
+	//hood split line top			
+	<group>
+		<line>
+			<p pxyz="-9,0,0" />
+			<p pxyz="9,0,0" />
+		</line>
+		<line2mesh all markedAs="2-tone hood" onThe="top" py=5.8 detachBy=0.1 />
+	</group >
+	//hood split line right			
+	<group>
+		<line>
+			<p pxyz="0,0,0" />
+			<p dy=-10 />
+		</line>
+		<line2mesh all markedAs="2-tone side" onThe="right" px=-5.8 py=11 detachBy=0.1 />
+	</group >
+	<clone="reflect" xyz="1,0,0" />
+
+	// slits
+	<mt_adjust uTex2nm_use="tx1" layer2as="" noShadow >
+		<group>
+			//hood slit
+			<a2mesh wh="20,0.8" xywh2nm="1.5,13.5,1,1.4" all markedAs="2-tone side" onThe="right" py=10.5 px=-16 detachBy=0.05 />
+			//front door front slit
+			<a2mesh wh="0.8,11" xywh2nm="4.5,15.5,3,1" all markedAs="2-tone side" onThe="right" py=6.5 detachBy=0.05 px=-1 />
+			//front door back slit
+			<a2mesh wh="0.8,11" xywh2nm="4.5,15.5,3,1" all markedAs="2-tone side" onThe="right" py=6.5 detachBy=0.05 px=9 />
+			//back door front slit
+			<a2mesh wh="0.8,11" xywh2nm="4.5,15.5,3,1" all markedAs="1-tone side" onThe="right" py=6.5 detachBy=0.05 px=13.5 />
+			//back door back slit
+			<a2mesh wh="0.8,4" xywh2nm="4.5,15.5,3,1" all markedAs="1-tone side" onThe="right" py=10 detachBy=0.05 px=23.5 />
+			//hood top slit sides
+			<a2mesh wh="6,0.2" xywh2nm="1.5,13.5,1,0.7" all markedAs="1-tone top" onThe="right" py=11.8 px=16.5 detachBy=0.05 />
+			
+			//gold emblem
+			<texture_as="logo_nm" src="../999_1935_deusenberg_ssj/logo02nm.png" ckey="#00ff00" />
+			<mt_use="roman-gold" uTex2nm_use="logo_nm" noShadow >
+				<group>
+					<vs="box" whl="22.1,2,3" />
+					<a="right" xywh2nm="0,0,256,79" />
+					<do="normalsFrom" xyz="4,0,0" />
+				</group pz=-11.2 py=9.5 >
+			</mt_use>
+		</group>
+		<clone="reflect" xyz="1,0,0" />
+		//hood top slit
+		<a2mesh wh="22,0.8" xywh2nm="1.5,13.5,1,1.4" all markedAs="1-tone top" onThe="top" py=-13.5 detachBy=0.05 />
+	</mt_adjust>
+
+
+	//door hinges
+	<group>
+		<group>
+			<group>
+				<mt_use="car-wire" lineWidth=0.5 noShadow />
+				<short p0="0,0,0" dy=1.5 />
+				<tip=end />
+			</group pxyz="-11.2,2,-9"  >
+			<clone py=3.5 />
+			<clone py=3.5 />
+		</group >
+		<clone pz=-4.5 />
+	</group>
+	<clone="reflect" xyz="1,0,0" />
+		
+	//door handles
+	<group>
+		<include="door_handle.txt"  pxyz="-9.2,0,-3.5" ay=5 />
+		<include="door_handle.txt"  pxyz="-10,0,-19" ay=180 />
+	</group py=10 >
+	<clone="reflect" xyz="1,0,0" />
+
+	//steering wheel
+	<group>
+		<mt_use=leather mt_type=wire uColor="#111111" lineWidth=0.7 /> //leather
+		<line>
+			<ring whl="6,6,0" sectR=12 />
+		</line>
+		<short p0="0,0,0" dz=-4 />
+		//spokes
+		<mt_use="metal-wire" lineWidth=0.3 />
+		<group>
+			<short p0="0,-1,0" dy=-1.8 />			
+		</group az=10>
+		<clone az=90 />
+		<clone az=90 />
+		<clone az=90 />
+		//klakson
+		<mt_use=leather uColor="#111111" />
+		<vs=cap whl="3,3,0.5" sectR=8 sectZ=2 />
+			<a=front />
+		<do="calc normals" />
+		<do="merge normals" />
+	</group ay=180 ax=-30 pxyz="4,10.5,-0.5" >
+	
+	//gear stick
+	<group>
+		<mt_use="metal-wire" lineWidth=0.4 />
+			<short p0="0,0,0" dz=-4 />
+		<mt_use=leather uColor="#111111" />
+		<vs=cap whl="1.5,1.5,1" sectR=8 sectZ=2 />
+			<a=front />
+		<do="calc normals" />
+		<do="merge normals" />
+	</group pxyz="0,7,0" ax=-110 >
+		
+	//right side grill	
+	<mt_use="car-body" uColor_use="car-body2" uTex2nm_src="right_grill.bmp" uTex2nm_glRepeatH=GL_REPEAT noShadow />
+	<group>
+		<vs=box whl="16,4,0" />
+		<a=front xywh2nm="0,1.5,47.8,1" />
+		<a=front xywh2nm="0,0,  47.8,1" height=1 py=2.5 />
+		<a=front xywh2nm="0,3,  47.8,1" height=1 py=-2.5 />
+		<do py=3 toY=1 applyTo="left" />
+		<do py=-2 toY=1 applyTo="right" />
+		
+		<do=points2mesh all markedAs="2-tone side" onThe="right" py=6.5 px=-16 detachBy=0.1 />
+		<do="calc normals" />
+	</group >
+
+	//wind-shield front
+	//base
+	<group>
+		<mt_use="car-wire" lineWidth=0.8 noShadow />
+		<line>
+			<p pxyz="-9,0,0" />
+			<p dx=18 />
+		</line>
+		<line2mesh all markedAs="2-tone hood" onThe="top" py=10.5 ax=30 detachBy=0.1 />
+	</group >
+	//wind-shield
+	<group>
+		<mt_use="car-wire" lineWidth=0.6 />
+		<line>
+			<p pxyz="-8,0,0" />
+			<p dy=6 r=0.3 />
+			<p dx=16 r=0.3 />
+			<p dy=-6 />
+		</line>
+		//glass
+		<element>
+			<group>
+				<mt_use="glass-plain" />
+				<vs=box whl="16,6,0" />
+				<a=front />//side="," />
+				<do="normalsFrom" xyz="0,0,-30" />
+			</group align=bottom pz=-0.2 >
+		</element>
+		//whipers
+		<mt_use="metal-wire" uColor="#222222" lineWidth=0.4 />
+		<group>
+			<short p0="1,3,0" dx=5 dy=-0.5 />
+			<short p0="3.5,2.7,0.2" p1="7,0.5,x" />
+			<tip=start />
+			<short p0="-1,2.7,0" dx=-5 dy=-0.9 />
+			<short p0="-3.5,2.2,0.2" p1="-7,0.5,x" />
+			<tip=start />
+		</group py=1 >
+	</group ax=-30 pxyz="0,11,4" >
+
+	//VIP wind-shield
+	//base
+	<group>
+		<mt_use="car-wire" lineWidth=0.8 noShadow />
+		<line>
+			<p pxyz="-9.8,0,0" />
+			<p dx=19.6 />
+		</line>
+		<line2mesh all markedAs="1-tone top" onThe="top" py=-16 detachBy=0.1 />
+	</group >
+	<group>
+		<mt_use="car-wire" lineWidth=0.6 />
+		<line>
+			<p pxyz="-9,0,0" />
+			<p dy=6 r=0.3 />
+			<p dx=18 r=0.3 />
+			<p dy=-6 />
+		</line>
+		//glass
+		<element>
+			<group>
+				<mt_use="glass-plain" />
+				<vs=box whl="18,6,0" />
+				<a=front />//side="," />
+				<do="normalsFrom" xyz="0,0,-30" />
+			</group align=bottom pz=-0.2 >
+			<clone="reflect" xyz="0,0,1" />
+		</element>
+	</group ax=1 pxyz="0,11,-16" >
+	
+	<element name="spare rear" >
+		
+		//rear spares base
+		<mt_use="car-body" uColor_use="car-body" />
+		<group>
+			<vs=box whl="6,8,6" />
+			<a="top,left,right" align=bottom >
+			<do py=-7 applyTo="back top only" />"
+			<do="calc normals" />
+		</group py=0 pz=-33 >
+	
+		//rear lights
+		<group>
+			<mt_use="car-chrome" />
+			<vs="cap" whl="2.5,2.5,1.25" sectR=10 sectZ=2 />
+			<a=wrap />
+			
+			<mt_use="cabochon" uColor="#aa0000" />
+			<a=front ay=180 />
+			
+			<do="calc normals" />
+			<do="merge normals" />
+			
+			<mt_use="car-wire" lineWidth=0.4 noShadow />
+			<line>
+				<ring whl="2.6,2.6,0" sectR=10 />
+			</line>
+			<mt_use="car-wire" lineWidth=0.6 />
+			<line>
+				<p pz=1 />
+				<p dz=1 r=0.6 />
+				<p dy=-3 />
+			</line>
+		</group pxyz="8.5,4,-37" >
+		<clone="reflect" xyz="1,0,0" />		
+	</element>
+	<element="../999_1935_deusenberg_ssj/wheel01.txt" name="spare rear 1" attachTo="spare rear" scale=12 py=10.5 pz=-35 ay=90 az=50 />
+	<element="../999_1935_deusenberg_ssj/wheel01.txt" attachTo="spare rear 1" scale=12 px=3.0 />
+	//belts
+	<element="spare_belts.txt" attachTo="spare rear 1" />
+	
+	<element name="spare sides" opaque >
+		<element="../999_1935_deusenberg_ssj/spare01.txt" attachTo="spare sides" scale=12 px=13  ay=90  py=10 pz=8.2 />
+		<element="../999_1935_deusenberg_ssj/spare01.txt" attachTo="spare sides" scale=12 px=-13 ay=-90 py=10 pz=8.2 />
+		
+		//holder
+		<mt_use="metal-wire" lineWidth=0.5 uColor="#333333" />
+		//<mt_type="flat" lineWidth=0.5 uColor="#ffffff" />
+		<group>
+			<short p0="7,4,8.2" dx=5 />
+			<short dy=-3 dx=-6 />
+		</group >
+		<clone="reflect" xyz="1,0,0" />
+		
+		//fender bays
+		//<mt_use="car-body" uColor_use="car-wings" mt_type="wire" lineWidth=0.4 layer2as="" noShadow />
+		<mt_type="flat" lineWidth=0.5 uColor="#000000" />
+		<group>
+			<line>
+				<p pxyz="1.8,0,0" />
+				<p dy=-5 r=1.3 />
+				<p dx=-3.6 r=1.3 />
+				<p dy=10.5 r=1.3 />
+				<p dx=3.6 r=1.3 />
+				<p dy=-5.5 />
+			</line>	
+			<line2mesh all markedAs="front wing" onThe="top" px=-13 py=9.1 detachBy=0.1 />			
+		</group >
+		<clone="reflect" xyz="1,0,0" />
+//<do py=5 all markedAs="front wing" />			
+		
+		
+		//mirrors
+		<group>
+			<mt_use="car-wire" lineWidth=0.5 /> //uColor="#ffffff" />
+			<short p0="0,0,0" dy=-4 />
+			<tip=start />
+			<group>
+				<line>
+					<ring whl="3.2,3.2,0" sectR=8 />
+				</line>
+				<do pz=-0.2 />
+				<mt_use="car-chrome" />
+				<vs="cap" whl="3,3,1" sectR=8 sectZ=1 />
+				<a=wrap />
+				<do="calc normals" />
+				<do="merge normals" />
+				<group> //mirror
+					<mt_type="mirror" uTex0_src="/dt/mt/wn64_256.bmp" uTex0translateChannelN=4 uColor1="#111111" uColor2="#aaaabb" uAmbient=1 uSpecularIntencity = 0 />
+					<a=back />						
+				</group>
+			</group align=front >
+		</group px=13 ay=20 py=13 pz=8.2 >
+		<clone="reflect" xyz="1,0,0" />
+		
+		<group> //mirror base
+			<group>
+				<mt_use="car-wire" lineWidth=0.4 noShadow /> //uColor="#ffffff" />
+				//<mt_type="flat" lineWidth=0.5 uColor="#ff0000" />
+				<line>
+					<p pxyz="1.7,0,0" />
+					<p dy=-2 r=1 />
+					<p dx=-3.4 r=1 />
+					<p dy=4 r=1 />
+					<p dx=3.4 r=1 />
+					<p dy=-2 />
+				</line>				
+			</group pz=0.3 >
+			<clone="reflect" xyz="0,0,1" />
+		</group px=13 pz=8.2 py=8.5 >
+		<clone="reflect" xyz="1,0,0" />
+		
+		//trunk
+		<color_as="trunk" uColor="#ff0000" />//scope=model />
+		<mt_use="car-body" mt_name="trunk" uColor_use="trunk" />
+		<group> //trunk
+			<group>
+				<vs="box-tank" whl="19,6,5" sectR=3 extU=2 extB=2 />
+				<a="top all,back h,left,right" />
+			</group align="front bottom" >
+			//slits
+			<mt_type=flat uColor="#000000" uAlphaFactor=0.5 lineWidth=0.3 noShadow />
+			<group>
+				<line>
+					<p pxyz="0,7.5,0" />
+					<p dz=-6.5 r=1.5 />
+					<p dy=-7.5 />
+				</line>
+				<short p0="0,5.5,-6.5" dz=-0.6" />
+			</group px=9.6 >
+			<clone=reflect xyz="1,0,0" />
+			<short p0="9.6,5.5,-7.1" dx=-19.2" />
+			//thin slits
+			<mt_type=flat uColor="#000000" uAlphaFactor=0.4 lineWidth=0.2 noShadow />
+			<group>
+				<short p0="0,7.5,-3" dy=0.6" />
+				<short p0="0,2,-6.5" dz=-0.6" />
+			</group px=9.6 >
+			<clone=reflect xyz="1,0,0" />
+			<short p0="9.6,8.1,-3" dx=-19.2" />
+			<short p0="9.6,2,-7.1" dx=-19.2" />
+			
+			//chrome parts
+			<mt_use="car-chrome" uTex2nm_use="tx1" noShadow />
+			<group>
+				<vs=box whl="1,3,0 />
+				<a=back xywh2nm="19,8,3,7" pxyz="4,4,-7.1" />
+				<vs=box whl="3,3,0 />
+				<a=back xywh2nm="16,1,6,6" pxyz="7,3,-7.1" />
+				<vs=box whl="3,0,3" />
+				<a=top xywh2nm="16,1,6,6" pxyz="7,8.1,-4" flip2nm=180 />
+				<mt_adjust uTex2nm_src="" >
+					<group>
+						<vs=box whl="2,3,0.4" />
+						<a="top,right" align="top right" />
+					</group pxyz="9.6,8.1,-1.5" >
+				</mt_adjust >
+			</group>
+			<clone=reflect xyz="1,0,0" />
+			<vs=box whl="3,4,0 />
+			<a=back xywh2nm="12,8,6,9" pxyz="0,5,-7.1" />
+			
+			<do="calculate normals" />
+			<do="merge normals" />
+		</group pxyz="0,1.5,-29.5" > //trunk
+	
+		//rear lights
+		<group>
+			<mt_use="car-chrome" />
+			<vs="cap" whl="2.5,2.5,1.25" sectR=10 sectZ=2 />
+			<a=wrap />
+			
+			<mt_use="cabochon" uColor="#aa0000" />
+			<a=front ay=180 />
+			
+			<do="calc normals" />
+			<do="merge normals" />
+			
+			<mt_use="car-wire" lineWidth=0.4 noShadow />
+			<line>
+				<ring whl="2.6,2.6,0" sectR=10 />
+			</line>
+			<mt_use="car-wire" lineWidth=0.6 />
+			<short p0="0,0,1" dz=3 />
+			
+		</group pxyz="13,6,-36" >
+		<clone="reflect" xyz="1,0,0" />		
+	</element>
+
+	<element name="signal-lights" >
+		<group>
+			<mt_use="car-chrome" />
+			<vs="cap" whl="2,2,1" sectR=8 sectZ=2 />
+			<a=wrap ay=180 />
+			
+			<mt_use="cabochon" uColor="#FF8000" />
+			<a=front />
+			
+			<do="calc normals" />
+			<do="merge normals" />
+			
+			<mt_use="car-wire" lineWidth=0.4 noShadow />
+			<line>
+				<ring whl="2.1,2.1,0" sectR=8 />
+			</line>
+			<mt_use="car-wire" lineWidth=0.6 />
+			<short p0="0,-1,0" dy=-1.5 />
+			
+		</group pxyz="13,11,26" >
+		<clone="reflect" xyz="1,0,0" />		
+	</element>
+
+</group py=6 >
+
+

@@ -1,0 +1,15 @@
+<include='/dt/mt/materials.txt'/>
+
+<color_as=frame uColor=#222222/>
+<mt_save_as=frame mt_use=teflon uColor_use=frame/>
+
+
+<element name=frame attachTo=bogie1 headTo=bogie2 place2middle opaque hit>
+
+	<mt_use=frame/>
+	<group>//entire frame
+		<box='18,2,30'/>//130'/>
+		<a='front,back,left,right' uColor=#ffffff side=',black'/>
+	</group align=bottom py=7>//entire frame
+
+</element>

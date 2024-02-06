@@ -1,0 +1,150 @@
+//#version 320 es
+precision highp float;
+
+#if defined(GLTF_SKIN)
+	layout (binding = 0) uniform uboBones {
+		mat4[100] uBoneTransforms;
+	};
+	uniform mat4 uVPcamera;
+
+	layout (location = 6) in ivec4 aJoints;
+	layout (location = 7) in vec4 aWeights;
+	
+	//calculatables
+	mat4 uMM; // Model matrix (for vHalfVector for glares)
+	mat4 uMVP; // transform matrix (Model-View-Projection)
+#else
+	uniform mat4 uMVP; // transform matrix (Model-View-Projection)
+	uniform mat4 uMM; // Model matrix (for vHalfVector for glares)
+#endif
+
+#if defined(GLTF_SKIN)
+	uniform mat4 uLookAt;
+	mat3 uMV3x3; // Model-View matrix (for calculating normals into eye space)
+#else
+	uniform mat3 uMV3x3; // Model-View matrix (for calculating normals into eye space)
+#endif
+
+layout (location = 0) in vec3 aPos; // position attribute (x,y,z)
+layout (location = 3) in vec3 aNormal; // normal attribute (x,y,z)
+//normal map
+layout (location = 2) in vec2 aTuv2; //attribute TUV2 (texture coordinates)
+layout (location = 4) in vec3 aTangent;
+layout (location = 5) in vec3 aBinormal;
+uniform int uHaveBinormal;
+
+#if defined(USE_TEXMOD)
+	uniform vec4 uTexMod;
+#endif
+
+out vec2 vTuv2; //varying TUV2 (pass to fragment shader)
+uniform vec3 uVectorToLight;
+uniform vec3 uCameraPosition; //for calculating half vector for glares
+uniform float uSpecularIntencity; //for calculating half vector for glares
+
+uniform float uTranslucency;
+uniform vec3 uVectorToTranslucent;
+
+out vec3 tbnVectorToLight;
+out vec3 tbnVectorToTranslucent;
+out vec3 tbnHalfVector;
+#if defined(MIRROR)
+	out vec2 vScreenPosition01;
+	out mat3 inversedTBN;
+#endif
+#if defined(USE_TUV0)
+	layout (location = 1) in vec2 aTuv; //attribute TUV (texture coordinates)
+	out vec2 vTuv; //varying TUV (pass to fragment shader)
+#endif
+#if defined(WITHSHADOWS)
+	#if defined(GLTF_SKIN)
+		mat4 uMVP4dm; // transform matrix (Model-View-Projection) for depth map
+		uniform mat4 uVPshadow;
+	#else
+		uniform mat4 uMVP4dm; // transform matrix (Model-View-Projection) for depth map
+	#endif
+	out vec3 vDMcoords; //depth map coords
+#endif
+
+void main(void) { 
+
+#if defined(GLTF_SKIN)
+	int boneN = aJoints[0];
+	uMM = uBoneTransforms[boneN] * aWeights[0];
+	for(int i=1; i<4; i++){
+		if(aWeights[i] == 0.0)
+			continue;
+		boneN = aJoints[i];
+		uMM = uMM + (uBoneTransforms[boneN] * aWeights[i]);	
+	}
+	
+	uMVP = uVPcamera * uMM;
+	
+	#if defined(USE_NORMALS)
+		uMV3x3 = mat3(uLookAt * uMM); // Model-View matrix (for calculating normals into eye space)
+	#endif
+	
+	#if defined(WITHSHADOWS)
+		uMVP4dm = uVPshadow	* uMM;
+	#endif
+#endif
+
+
+	gl_Position = uMVP * vec4(aPos, 1.0);
+#if defined(USE_TUV0)
+	vTuv = aTuv;
+	#if defined(USE_TEXMOD)
+		if(uTexMod[0] == 0.0){
+			vTuv[0] = vTuv[0]*uTexMod[1] + uTexMod[2];
+			vTuv[1] = vTuv[1]*uTexMod[1] + uTexMod[3];
+		}
+	#endif
+#endif
+
+	vTuv2 = aTuv2;
+	#if defined(USE_TEXMOD)
+		if(uTexMod[0] == 2.0){
+			vTuv2[0] = vTuv2[0]*uTexMod[1] + uTexMod[2];
+			vTuv2[1] = vTuv2[1]*uTexMod[1] + uTexMod[3];
+		}
+	#endif
+	
+	// Transform the normal's orientation into eye space.    
+	vec3 N = uMV3x3 * aNormal;
+	vec3 T = uMV3x3 * aTangent;
+	vec3 B;
+	if(uHaveBinormal > 0)
+		B = uMV3x3 * aBinormal;
+	else
+		B = cross(T,N); //binormal
+		
+	//build TBN matrix
+	mat3 TBN = mat3(
+			T[0],B[0],N[0],
+			T[1],B[1],N[1],
+			T[2],B[2],N[2]
+			);
+	tbnVectorToLight = TBN * uVectorToLight;
+	if(uTranslucency > 0.0)
+		tbnVectorToTranslucent = TBN * uVectorToTranslucent;
+	if(uSpecularIntencity > 0.0){ //for glares
+		vec4 vxPos = uMM * vec4(aPos, 1.0); //vertex position
+		vec3 dirToCamera = normalize(uCameraPosition - vec3(vxPos));
+		vec3 vHalfVector = normalize(dirToCamera + uVectorToLight);
+		tbnHalfVector = TBN * vHalfVector;
+	}
+#if defined(MIRROR)
+	vScreenPosition01[0] =  (gl_Position[0]/gl_Position[3])*0.1;
+	vScreenPosition01[1] = -(gl_Position[1]/gl_Position[3])*0.1;
+	inversedTBN = inverse(TBN);
+#endif
+#if defined(WITHSHADOWS)
+	vec4 depthMapPosition = uMVP4dm * vec4(aPos, 1.0);
+	//varying TUV for depth map (passed from vertex shader)
+	vDMcoords.x = depthMapPosition.x * 0.5 + 0.5;
+	vDMcoords.y = depthMapPosition.y * 0.5 + 0.5;
+	vDMcoords.z = depthMapPosition.z;
+#endif
+
+}
+

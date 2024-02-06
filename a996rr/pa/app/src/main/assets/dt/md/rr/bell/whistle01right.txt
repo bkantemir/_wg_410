@@ -1,0 +1,13 @@
+
+
+<group>
+	<mt_use=bell >
+		<vs=cylinder whl='1,1,2.5' sectR=6 />
+		<a='front,wrap' />
+	</mt_use>
+</group headZto=y align=bottom px=1 py=1>
+<line mt_use=body >
+	<p pxyz='1,1,0' />
+	<p dy=-1 r=0.3/>
+	<p dx=-1.5/>
+</line>

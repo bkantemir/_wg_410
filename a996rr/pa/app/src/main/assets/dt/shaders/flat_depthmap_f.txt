@@ -1,0 +1,11 @@
+#version 320 es
+precision highp float;
+out vec4 FragColor; //output pixel color
+uniform sampler2D uTex0;  //texture id
+in vec2 vTuv; //varying TUV (passed from vertex shader)
+ 
+void main(void) {
+	vec4 color = texture(uTex0, vTuv);
+	float r = color[0]*0.5+0.5;
+    FragColor = vec4(r,r,r,1.0);
+}

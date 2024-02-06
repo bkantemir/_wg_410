@@ -1,0 +1,207 @@
+<color_as=body uColor_use=silver/>
+<mt_save_as=body mt_use=silver/>
+
+<color_as=body-base uColor_use=frame/>
+<mt_save_as=body-base mt_use=frame uColor_use=body-base/>
+
+<element name=tank attachTo=frame py=7.5 opaque hit>
+	<mt_use=body/>
+	<group>//entire tank
+		<vs=cylinder whl='15,15,62' ext=2 sectR=15/>
+		<a='front,back' />
+		<vs=cylinder whl='15,15,62' angleFromTo='-30,210' sectR=10 />
+		<a='wrap' mark=body />
+		//rivets
+		<group mark=body>
+			<group>//wrapping rivets front curcle
+				<vs=cylinder whl='15.1,15.1,1.5' angleFromTo='-30,210' sectR=10 />
+				<texture_as=rivets4x2nm src='/dt/md/rivets4x2cut.bmp' ckey=#00ff00 glRepeat=GL_REPEAT/>	
+				<mt_use=body nm=rivets4x2nm noShadow>
+					<a=wrap xywh2nm_GL='0,0,24,1'/>
+				</mt_use>
+			</group pz=-31>//wrapping rivets rear curcle
+			<clone pz=20.5 />
+			<clone pz=20.5 />
+			<clone pz=20.5 />
+		</group>
+		
+		<group>
+			<mt_use=body-base >//uColor=#ff0000>
+				<vs=cylinder whl='15,15,62' angleFromTo='-150,-30' sectR=5 />
+				<a='wrap' />
+				<mt_use=metal-wire lineWidth=0.6 uColor_use=body noShadow uAmbient=0.8 uSpecularIntencity=0.5>
+					<group>//right side
+						<short p0='7.3,-2.8,31' dz=-62 />
+					</group>//right side
+					<clone=reflect xyz='1,0,0'/>
+				</mt_use>
+			</mt_use>
+		</group>
+		
+		<element attachTo=tank transparent >
+			<color_as=tank-bridge uColor_use=body/>
+			<mt_save_as=tank-bridge mt_use=body/>
+			<group>//top bridge right
+				<texture_as=tank-bridge src='/dt/md/bridge1x4nm.bmp' ckey=#00ff00 glRepeat=GL_REPEAT/>
+				<mt_use=tank-bridge nm=tank-bridge uAlphaBlending=1 uSpecularIntencity=0.5/>
+				<box='3,0.4,50'/>
+				<a=top xywh2nm_GL='0,0,0,40'/>
+				<mt_use=metal-wire uColor_use=tank-bridge uSpecularIntencity=0.4 lineWidth=0.3/>
+				<short p0='-1.5,0,-25' dx=3/>
+				<short dz=50/>
+				<short dx=-3/>
+				<short dz=-50/>	
+				
+				<mt_use=body/>
+				<group> //bridge fasteners
+					<box='1.5,1.5,0.6'/>
+					<a='front,back,top,right'/>
+				</group px=-1.5 pz=-24> //bridge fasteners
+				<clone pz=16/>
+				<clone pz=16/>
+				<clone pz=16/>
+			</group py=6 px=6.5>//top bridge right
+			<clone=reflect xyz='1,0,0'/>
+		</element>
+					
+		<element attachTo=tank >
+			<group>//front handles
+				<group>//right handle
+					<line mt_use=metal-wire lineWidth=0.3 uColor_use=body >//uColor=#ff0000>//
+						<p pxyz='0,-2.5,0' r=0.2/>
+						<p dz=1.5 r=0.2/>
+						<p dy=5 r=0.2/>
+						<p pz=0 r=0.2/>
+					</line>
+				</group az=-20 pxyz='5.5,-1.5,31.5'>//right handle
+				<clone=reflect xyz='1,0,0'/>
+			</group>//front handles
+			<clone=reflect xyz='0,0,1'/>
+		
+			<group> //right ladder
+				<color_as=ladder uColor_use=frame/>//uColor=#ff0000/>//
+				<mt_save_as=ladder mt_use=metal-wire uColor_use=ladder lineWidth=0.4/>
+				<mt_use=ladder/>
+				<group>//left line
+					<line>
+						<p pxyz='8.5,-8,0'/>
+						<p dx=1 r=0.2 />
+						<p py=2 dx=0.2 r=4/>
+						<p pxyz='8.5,7,0' r=0.2/>
+						<p dx=-0.5 r=0.2/>
+						<p dy=-1/>
+					</line>
+				</group pz=-1.5>//left line
+				<clone pz=3 mark=guide/>
+				<group>
+					<short p0='0,0,0' pz=-3/>
+					<clone2line=guide clonesN=5 interval=2.8 fromL=3.5 />
+				</group>
+			</group> //right ladder
+			<clone=reflect xyz='1,0,0'/>
+			
+			<group> //big around handle
+				<color_as=around-handle uColor_use=body/>//uColor=#ff0000/>//
+				<mt_save_as=around-handle mt_use=metal-wire uColor_use=around-handle lineWidth=0.3/>
+				<mt_use=around-handle/>
+				<line mark=guide>
+					<group>
+						<p pxyz='8,0,0'/>
+						<p dz=-32 r=2 />
+						<p dz=-2 px=0 r=4/>
+						<p dz=2 px=-8 r=2/>
+						<p pz=0 />
+					</group>
+					<clone=reflect xyz='0,0,1'/>
+				</line>
+				<group mark=body>//fasteners
+					<group>//back fasteners
+						<group>//back right fasteners
+							<mt_use=body />//mt_type=phong uColor=#ff0000/>
+							<box='2,1,0.5'/>
+							<a='top,right,front,back'/>
+							<do az=20 px=-0.5 py=-0.3/>
+							<clone2line=guide clonesN=4 interval=8 fromL=4 />
+						</group>//back right fasteners
+						<clone=reflect xyz='1,0,0'/>
+						<group>//back fastener
+							//<box='2,1,0.5'/>
+							<a='top,right,front,back'/>
+							<do az=20 px=-0.5 py=-0.3/>
+						</group ay=90 pz=-33.5>//back fastener
+					</group>//back fasteners
+					<clone=reflect xyz='0,0,1'/>
+				</group>//fasteners
+			</group py=3> //big around handle	
+		</element>
+		
+	</group >//entire tank
+</element>
+
+<mt_use=body/>
+<element name=domes attachTo=tank py=7.5 opaque hit>
+	<group>//all domes
+		<group>//center dome
+			<group> dome base
+				<vs=cylinder whl='8,8,0.5' sectR=15 />
+				<a=wrap/>
+				<do sizeD='2,2,0' toZ=0/>
+				<group>//bottom rivets
+					<line mark=guide mt_type=flat lineWidth=0.2 uColor=#ff0000 dontRender>
+						<ring whl='9,9,0' sectR=15/>
+					</line>
+					<group>
+						<a=front box='0.8,0.8,0' nm=rivets4x2nm xywh2nm='0,0,2,2' noShadow />
+						<clone2line=guide clonesN=20 />
+					</group>
+				</group pz=0.2>//bottom rivets 
+				<do pz=-1.5 applyTo='sidesX pow2' toZ=0.24/>
+				<do='calc merge normals'/>
+			</group align=front> //dome base
+			<group> dome top
+				<vs=cylinder whl='8,8,3' extF=0.5 sectR=15 />
+				<a='front'/>
+				<a='wrap' mark=dome/>
+				<group>//wrapping rivets mid curcle
+					<vs=cylinder whl='8.1,8.1,0.8' sectR=15 />
+					<mt_use=body nm=rivets4x2nm noShadow>
+						<a=wrap xywh2nm_GL='0,0,25,0.5' mark=dome/>
+					</mt_use>
+				</group pz=1.5>//wrapping rivets mid curcle
+				<group>//top 6 rivets
+					<line mark=guide mt_type=flat lineWidth=0.2 uColor=#ff0000 dontRender>
+						<ring whl='3.2,3.2,0' sectR=8/>
+					</line>
+					<group>
+						<a=front box='1.2,1.2,0' nm=rivets4x2nm xywh2nm='0,0,2,2' noShadow />
+						<clone2line=guide clonesN=6 />
+					</group>
+					<a=front box='1.6,1.6,0' nm=rivets4x2nm xywh2nm='0,0,2,2' noShadow />
+				</group pz=2.1>//top 6 rivets 
+				<do='calc merge normals'/>
+				<mt_use=body/>				
+				<group>//top back lid
+					<box='1.5,1.5,1'/>
+					<a='front,bottom,left,right'/>
+				</group py=-2.5 pz=1.7>//top back lid
+				<group>//top front pipe
+					<vs=cylinder whl='1.5,1.5,2' sectR=6/>
+					<a='front,wrap'/>
+				</group align=back py=2.5 pz=1.5>//top front pipe				
+			</group align=back> //dome top
+			<group>//handles
+				<line mt_use=metal-wire lineWidth=0.3 uColor_use=body >//uColor=#ff0000>//
+					<group>//right handle
+						<p pxyz='0,-1.5,0' r=0.2/>
+						<p dx=1.5 r=0.2/>
+						<p dy=3 r=0.2/>
+						<p px=0 r=0.2/>
+					</group px=3.5 pz=2.5>//right handle
+					<clone=reflect xyz='1,0,0'/>
+				</line>
+			</group>//handles
+		</group headZto=y py=0.5>//center dome
+		<clone pz=-20.5/>
+		<clone=reflect xyz='0,0,1'/>
+	</group>//all domes
+</element>

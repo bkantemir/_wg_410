@@ -1,0 +1,59 @@
+<mt_save_as=black mt_type=flat uColor=#000000 uTex2nm=-1 layer2as=''/>
+<mt_save_as=black-nm mt_type=phong uColor=#000000 layer2as='' uAmbient=1 uSpecularIntencity=0/>
+
+<texture_as="whitenoise" src="/dt/mt/wn64_blur3.bmp"/>
+<texture_as="whitenoise2" src="/dt/mt/wn64_blur1.bmp"/>
+
+<color_as=chrome scope=app uColor=#666666 />
+<mt_save_as="metal-wire" scope=app mt_type="wire" uColor_use=chrome uAmbient=0.3 uSpecularPowerOf=10  uSpecularMinDot=0.7 uSpecularIntencity=0.8 />
+<color_as=gold scope=app uColor=#825A00 />
+<mt_save_as="gold-wire"  scope=app mt_type="wire" uColor_use=gold uAmbient=0.3 uSpecularPowerOf=10 uSpecularMinDot=0.8 uSpecularIntencity=0.9 />
+
+<mt_save_as="gloss-wire" scope=app mt_use=metal-wire uSpecularPowerOf=6 uSpecularMinDot=0.7 uSpecularMinDot2=0.97  uSpecularIntencity=0.85 />
+
+<mt_save_as="chrome" scope=app mt_type="mirror" uTex0_use="whitenoise" uTex0translateChannelN=0 uTex3_src="/dt/mt/chrome01.bmp" uSpecularIntencity=1 layer2as="" />
+<mt_save_as="dark-chrome" scope=app mt_use=chrome uTex3_src="/dt/mt/chrome02dark.bmp" />
+<mt_save_as="roman-gold" scope=app mt_use=chrome uTex3_src="/dt/mt/gold02roman.bmp" />
+<mt_save_as=gold mt_use=roman-gold />
+<mt_save_as="bronze" scope=app mt_use=chrome uTex3_src="/dt/mt/bronze01.bmp" />
+<color_as=silver scope=app uColor=#888888 />
+<mt_save_as="silver" scope=app mt_use=chrome uTex3_src="/dt/mt/silver01.bmp" />
+<color_as=dark-silver scope=app uColor=#555555 />
+<mt_save_as="dark-silver" scope=app mt_use=chrome uTex3_src="/dt/mt/silver02dark.bmp" />
+
+<mt_save_as="clearcoat-pearl"    noShadow uBleach=0 scope=app mt_type="mirror" uAlphaFactor=0.6 uSpecularIntencity=0 uAmbient=0.7 uTex0_use="whitenoise2" uTex0translateChannelN=1 uTex3_src="/dt/mt/glass01.bmp" />
+<mt_save_as="clearcoat-gloss"    noShadow uBleach=0 scope=app mt_type="mirror" uAlphaFactor=0.7 uTex0_src="/dt/mt/wn32_256.bmp" uTex0translateChannelN=0 uTex3_src="/dt/mt/glass01_16.bmp" uAmbient=0.7 uSpecularIntencity=0 />
+<mt_save_as="clearcoat-plastic"  noShadow uBleach=0 scope=app mt_type="mirror" uAlphaFactor=0.4 uTex0_src="/dt/mt/wn32_256.bmp" uTex0translateChannelN=0 uTex3_src="/dt/mt/glass01_8.bmp" uAmbient=0.7 uSpecularIntencity=0 />
+<mt_save_as="clearcoat-tin"      noShadow uBleach=0 scope=app mt_type="mirror" uAlphaFactor=0.15 uSpecularIntencity=0 uAmbient=0.7 uTex0_use="whitenoise2" uTex0translateChannelN=1 uTex3_src="/dt/mt/glass01_2.bmp" />
+<mt_save_as="clearcoat-metallic" noShadow uBleach=0 scope=app mt_type="mirror" uAlphaFactor=0.4 uSpecularIntencity=0 uAmbient=0.7 uTex0_use="whitenoise2" uTex0translateChannelN=1 uTex3_src="/dt/mt/glass01_2.bmp" />
+
+<mt_save_as="gloss"    scope=app mt_type="phong" uAmbient=0.4 uSpecularIntencity=0.9 uSpecularMinDot=0.95 uSpecularMinDot2=0.995 uSpecularPowerOf=60 layer2as="" /> //gloss
+<mt_save_as="satin"    scope=app mt_type="phong" uAmbient=0.4 uSpecularIntencity=0.6 uSpecularMinDot=0.8  uSpecularMinDot2=0.99 uSpecularPowerOf=20 layer2as="" /> //satin
+<mt_save_as="matte"    scope=app mt_type="phong" uAmbient=0.4 uSpecularIntencity=0.3 uSpecularMinDot=0.4  uSpecularPowerOf=4  layer2as="" /> //matte
+<mt_save_as="hi-gloss" scope=app mt_use=gloss layer2as="clearcoat-gloss" />
+<mt_save_as="pearl"    scope=app mt_type="phong" uAmbient=0.4 uSpecularIntencity=0.8 uSpecularMinDot=0.7 uSpecularMinDot2=0.98 uSpecularPowerOf=12 layer2as="clearcoat-pearl" /> //pearl
+<mt_save_as="metal"    scope=app mt_type="phong" uAmbient=0.2 uSpecularIntencity=0.8 uSpecularMinDot=0.7 uSpecularPowerOf=12 layer2as="" /> //metal
+<mt_save_as="teflon"  scope=app mt_type="phong" uAmbient=0.4 uSpecularIntencity=0.4 uSpecularMinDot=0.8 uSpecularPowerOf=15 layer2as="" /> //teflon
+<mt_save_as="tin"      scope=app mt_use=metal uSpecularMinDot2=0.98 layer2as="clearcoat-tin" /> //tin
+<mt_save_as="metallic" scope=app mt_type="phong" uAmbient=0.2 uSpecularIntencity=2 uSpecularMinDot=0.95 uSpecularMinDot2=0.98 uSpecularPowerOf=60 layer2as="clearcoat-metallic" /> //metallic
+<mt_save_as=plastic  scope=app mt_type="phong" uAmbient=0.8 uSpecularIntencity=0.6 uSpecularMinDot=0.9 uSpecularMinDot2=0.98 uSpecularPowerOf=5 layer2as="" /> //plastic
+<mt_save_as=plastic-gloss scope=app mt_use=plastic layer2as=clearcoat-plastic /> //plastic
+<mt_save_as="leather"  scope=app mt_type="phong"  uAmbient=0.3 uSpecularIntencity=0.8 uSpecularMinDot=0.75 uSpecularPowerOf=15 layer2as="" /> //leather
+
+<mt_save_as="glass-plain" scope=app mt_type="mirror" noShadow uAmbient=0.7 uAlphaFactor=0.8 uSpecularIntencity=0 uTex0_use="whitenoise2" uTex0translateChannelN=2 uTex3_src="/dt/mt/glass01_2.bmp" />
+<mt_save_as="cabochon" scope=app mt_type="phong" uTranslucency=1 uColor="#aa0000" uAmbient=0.1 uSpecularIntencity=1.2 uSpecularMinDot=0.95 uSpecularPowerOf=20 />
+
+<mt_save_as="gunmetal" scope=app mt_use=metal uColor=#666666 />
+
+<color_as=rust scope=app uColor=#665544 / >
+<mt_save_as=rust scope=app mt_use=teflon uColor_use=rust / >
+<color_as=surik scope=app uColor=#821E14 / >
+<mt_save_as=surik scope=app mt_use=satin uSpecularMinDot2=0.98 uColor_use=surik />
+<mt_save_as=wet scope=app mt_use=satin uSpecularIntencity=1 uColor_use=surik />
+<mt_save_as=plastic2 scope=app mt_type="phong" uAmbient=0.5 uTranslucency=0.2 uSpecularIntencity=0.6 uSpecularMinDot=0.9 uSpecularMinDot2=0.98 uSpecularPowerOf=5 layer2as="" /> //plastic
+
+
+<mt_save_as=varnish-rainbow    scope=app noShadow scope=app mt_type="mirror" uAlphaFactor=0.3 uSpecularIntencity=0 uAmbient=0.8 uTex0_use=whitenoise uTexMod='0,0.7,0,0' uTex0translateChannelN=1 uTex3_src="/dt/mt/rainbow01_8.bmp" uTex3_ckey=#ffffff />/
+<mt_save_as=pearl2    scope=app mt_use=metal layer2as=varnish-rainbow /> //pearl
+// uTexMod='0,1,0,0'
+

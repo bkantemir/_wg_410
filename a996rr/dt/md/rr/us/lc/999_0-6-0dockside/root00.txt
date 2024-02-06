@@ -1,0 +1,152 @@
+//<model="0-6-0 H.K.Porter Dockside Switcher" yearFrom=1917 />
+
+
+<color_as=gear uColor_use=frame />
+<mt_save_as=gear mt_use=frame />
+
+<color_as=handles uColor_use=frame />
+<mt_save_as=handles mt_use=metal-wire uColor_use=handles lineWidth=0.3 />
+
+<texture_as="tx2body" src="body01.bmp" ckey="#00ff00"/>
+<mt_save_as=body2nm mt_use=body uTex2nm_use=tx2body />
+
+<texture_as=gear2nm src=gear02.bmp ckey=#00ff00/>
+
+
+<element name=frame class="OnRails" wheelBase=20 wheelPairs=3 opaque hit>
+	<group >
+		<mt_use="frame" />
+		<box='6,4,45' />
+		<a="left,right,top" />
+		<group>//right brakes
+			<group>//mid wheel
+				<a=right mt_use=gear nm=gear2nm xywh2nm='0,16,16,16' box='0,3,3' />//uColor=#ff0000 />
+			</group align='top left' py=-1.3 pz=3.8 >//mid wheel
+			<clone pz=-10 />
+		</group px=5 >//right brakes
+		<clone=reflect xyz='1,0,0' />
+		<group>//owen
+			<texture_as="rivets4" src="/dt/md/rivets4.bmp" glRepeat=GL_REPEAT />
+			<mt_save_as=owen mt_use=frame />
+			<mt_use=owen nm=rivets4 />
+			<vs=box-tank whl='5,6,12' ext=0.5 extY=0 />
+			<a='front h' -nm />
+			<a='left,right' xywh2nm_GL='0,0,10.5,6' />
+		</group align='bottom front' py=2 pz=-4 >//owen
+		
+		//wheel springs
+		<group>//right springs
+			<group> //mid wheel
+				<mt_use=frame mt_type=wire lineWidth=0.8 />//uColor=#ff0000/>
+				<short p0='0,0,3' dy=6/>
+				<short p0='0,0,-3' dy=6/>
+				<short p0='0,5.3,-3' dz=6/>
+			</group px=4.1> //mid wheel
+			<clone pz=-10/>
+			<clone pz=20/>
+		</group>//right springs
+		<clone=reflect xyz='1,0,0'/>
+	</group py=4.5 >
+
+	<mt_use=body />
+	<group>//front floor
+		//floor
+		<vs=box whl='14,1,6' />
+		<a='top,left,right,back' align=front />
+		<group>//boiler base
+			<vs=box whl='6,7,5' />
+			<a='front,left,right,back' />	
+			<group>//front extension
+				<vs=box whl='4,1,2' />
+				<a='top,front,left,right' />
+			</group align='back bottom' py=-3.5 pz=2.5>//front extension		
+		</group align='bottom' py=0.5 pz=-4.5>//boiler base
+		<mt_use=handles>
+			<group>
+				<short p0='-8.5,0,0.8' dy=6 />
+				<tip=end />
+			</group>
+			<clone=reflect xyz='1,0,0'/>
+			<short p0='0,0,0.8' dy=2 />
+			<short p0='-8.5,2,0.8' dx=17 />
+		</mt_use> //handles
+	</group py=7 pz=23 >//floor
+	
+	//bumpers
+	<include=bumper01.txt pz=24 />//front bumper
+	<include=bumper01.txt ay=180 pz=-25 />//rear bumper
+	
+/*
+	//body
+	<color_as=body uColor="#aaaaaa" />
+	<vs=cap whl='18,18,10' sectR=16 sectZ=4 />
+	<a=front uColor_use=body headZto='0,1,0' py=10 pz=-20 mt_use=pearl />
+	<a=front uColor_use=body headZto='0,1,0' py=10 pz=0 mt_use=pearl2 />
+	//<a=front uColor_use=body headZto='0,1,0' py=10 pz=20 mt_use=satin />
+*/
+</element>
+
+<element name=cylinders attachTo=frame py=4.5 pz=18 opaque >
+	<mt_use=body />
+	<group> //1 cylinder
+		<vs=cylinder whl='5,5,5' sectR=6 />
+		<a='front,back' />
+		<mt_use=body2nm >
+			<a='wrap' xywh2nm='0.5,0,0,14' />
+			<a='front' box='1,1,5.1' xywh2nm='1,0,2,2' />//front rivet
+			<a='back' box='2,2,5.1' xywh2nm='3,0,6,6' />//piston shaft bay
+		</mt_use>
+		<group>//top box
+			<vs=box-tank whl='3,3.5,3' ext=0.5 extY=0 sectR=1 />
+			<texture_as=rivets8 src='/dt/md/rivets8.bmp' ckey=#00ff00 glRepeat=GL_REPEAT />
+			<a='top' nm=rivets8 xywh2nm='-1,-1,12,12' py=0.1 />
+			<a='front,back,right h,left h' />
+			<do='merge normals'/>
+		</group align=bottom py=1 >//top box
+		<group> //gear
+			<mt_use=gear >//mt_type=flat uColor=#ff0000 -nm >
+				<group> //rails
+					<vs=box whl='0,1,11' />
+					<a='right' py=3.25 nm=gear2nm xywh2nm='20.5,7,0,4' />
+					<a='right' py=1.75 nm=gear2nm xywh2nm='20.5,7,0,4' />
+				</group align=front pz=-1.5 > //rails
+				<group> //rails handler
+					<vs=box whl='4,1.5,1' />
+					<a='right' xywh2nm='21,6.5,4,0' />
+					<a='top' xywh2nm='21,6.5,4,0' flip2nm=90 />
+					<group>//box on top of handler
+						<vs=box whl='3,1.5,0.5' />
+						<a='right,top,front,back' uTex2nm=-1 />
+						<mt_use=metal-wire lineWidth=0.3 />
+						<short  p0="1,0.4,-1" dz=12 />
+						//<tip=start />
+					</group align=bottom py=0.75 >//box on top of hanler
+				</group align=right px=0.5 py=2.5 pz=-13 >
+			</mt_use>
+		</group > //gear
+	</group px=7>
+	<clone="reflect" xyz="1,0,0" />
+</element>
+
+<include=boiler01.txt />
+<include=cabin01.txt />
+
+<element='/dt/md/rr/coupler/couplerbox01.txt' class=coupler full attachTo=frame py=5 pz=24.5 opaque name=g/>
+<element='/dt/md/rr/coupler/couplerbox01.txt' class=coupler full attachTo=frame ay=180 py=5 pz=-25.5 opaque name=r/>
+/*
+<element='/dt/md/rr/line-green.txt' attachTo=g />
+<element='/dt/md/rr/line-red.txt' attachTo=r />
+*/
+
+<element="wheelpair9.txt" name="wheel2" attachTo=frame model-specific class=WheelPair py=4.5 opaque />
+<element="wheelpair9.txt" name="wheel1" attachTo=frame follow=wheel2  class=WheelPair py=4.5 pz=10 opaque />
+<element="wheelpair9.txt" name="wheel3" attachTo=frame follow=wheel2  class=WheelPair py=4.5 pz=-10 opaque />
+
+
+<element="gear01.txt" class=Gear attachTo=frame follow=wheel2 lever=2 model-specific /> 
+<element="gear01.txt" class=Gear attachTo=frame follow=wheel2 lever=2 followAngleShift=90 renderMirrorAxis=0 /> 
+
+<element='/dt/md/light/dir01flat.txt' class=DirLight scale=3 attachTo=boiler py=23 pz=26 />
+<element='/dt/md/light/dir01flat.txt' class=DirLight scale=3 attachTo=cabin py=24 pz=-23 ay=180 />
+
+<element='/dt/md/rr/bell/bell01top.txt' scale=1.8 attachTo=boiler pxyz='-2,25,17' model-specific opaque />

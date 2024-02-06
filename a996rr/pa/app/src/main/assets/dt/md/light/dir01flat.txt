@@ -1,0 +1,40 @@
+
+<texture_as="whitenoise" src='/dt/mt/wn64_blur3.bmp'/>
+<texture_as=light01 src='/dt/md/light/lights02.bmp' />
+<mt_save_as=light01dir scope=app mt_type="mirror" uTex0_use=whitenoise uTex0translateChannelN=0 uTex3_use=light01 uAmbient=1 uSpecularIntencity=0 noShadow layer2as="" />
+
+<texture_as=lightglow src='/dt/md/light/lights01.bmp' ckey=#0000ff />
+<mt_save_as=light02glow scope=app mt_type=flat uTex0_use=lightglow noShadow uAlphaFactor=0.4 layer2as="" />
+
+<element name="light_off" opaque>
+	<vs=cap whl='10,10,1' sectR=10 sectZ=2 />
+	<group>
+		<group> //light mid
+			<mt_use=chrome />
+			<a=front side=in/>
+		</group headZto='0,0,-1'> //light mid
+		<a=front box='4,4,0' mt_type=flat uColor=#333333 pz=-0.5 />
+		//outer gless
+		<a=front l=0 sectZ=1 mt_use=glass-plain uAlphaFactor=0.3/>
+	</group scale=0.1 >
+</element >
+
+
+<element name="light_on" transparent>
+	<group>
+		<group> //light mid
+			<mt_use=light01dir />
+			<vs=cap whl='10,10,1' sectR=10 sectZ=2 />
+			<a=front side=in/>
+		</group headZto='0,0,-1'> //light mid	
+		<a=front box='4,4,0' mt_type=flat uColor=#ffffee />
+		
+		<group> //glow
+			<mt_use=light02glow />
+			<vs=cylinder whl='10,10,2' sectR=10/>
+			<a=wrap side=in xywh='1.5,0,0,2'/>
+			<do scale='3,3,1' applyTo='front' />
+		</group align=back> //glow
+		
+	</group scale=0.1 >
+</element >

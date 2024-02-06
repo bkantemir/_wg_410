@@ -1,0 +1,12 @@
+#version 320 es
+precision highp float;
+uniform mat4 uMVP; // transform matrix (Model-View-Projection)
+ 
+layout (location = 0) in vec3 aPos; // position attribute (x,y,z)
+layout (location = 1) in vec2 aTuv; //attribute TUV (texture coordinates)
+out vec2 vTuv; //varying TUV (pass to fragment shader)
+ 
+void main(void) { 
+    gl_Position = uMVP * vec4(aPos, 1.0);
+    vTuv = aTuv;
+}

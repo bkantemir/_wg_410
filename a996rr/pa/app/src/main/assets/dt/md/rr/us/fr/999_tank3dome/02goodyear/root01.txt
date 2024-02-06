@@ -1,0 +1,41 @@
+<model="36' 3 dome tank car" yearFrom=1935 />
+
+<color_as=body uColor=#ffd828/> //yellow-orange
+<mt_save_as=body mt_use=plastic uColor_use=body />
+
+<color_as=frame uColor=#222222/>
+<mt_save_as=frame mt_use=teflon uColor_use=frame/>
+
+<color_as=tank-bridge uColor_use=frame/>
+<mt_save_as=tank-bridge mt_use=frame/>
+
+<color_as=around-handle uColor_use=chrome/>//uColor=#ff0000/>//
+<mt_save_as=around-handle mt_use=metal-wire uColor_use=around-handle lineWidth=0.3/>
+
+<include='../root00.txt'/>
+
+
+<for_element=tank>
+	<texture_as=logo src=goodyear01.bmp />
+	<color_as=font uColor=#331111/>//222222 />
+	<mt_save_as=font mt_use=satin uColor_use=font uTex1mask_use=logo uTex1alphaChannelN=0 sticker/>
+	<group>
+		<mt_adjust mt_use=font>
+			<a2mesh wh='16,7' xywh='0,0,128,64' all markedAs=body onThe=right px=12 ax=-8 detachBy=0.1 />//goodyear logo ax=-25
+			<a2mesh wh='16,1.8' xywh='0,65,128,17' all markedAs=body onThe=right px=-22 ax=-28 detachBy=0.1 />//goodyear tire
+			<a2mesh wh='11,1.8' xywh='0,82,86,17' all markedAs=body onThe=right px=-7.5 ax=-28 detachBy=0.1 />//& rubber
+			<a2mesh wh='11,2.5' xywh='0,99,89,25' all markedAs=body onThe=right px=-24.5 ax=-2 detachBy=0.1 />//UTLX
+
+			<a2mesh wh='16,7' xywh='0,0,128,64' all markedAs=body onThe=left px=12 ax=-8 detachBy=0.1 />//goodyear logo ax=-25
+			<a2mesh wh='16,1.8' xywh='0,65,128,17' all markedAs=body onThe=left px=-22 ax=-28 detachBy=0.1 />//goodyear tire
+			<a2mesh wh='11,1.8' xywh='0,82,86,17' all markedAs=body onThe=left px=-7.5 ax=-28 detachBy=0.1 />//& rubber
+			<a2mesh wh='11,2.5' xywh='0,99,89,25' all markedAs=body onThe=left px=-24.5 ax=-2 detachBy=0.1 />//UTLX
+		</mt_adjust>
+		<mt_adjust mt_use=font uTex1mask_src='/dt/md/rr/us/txt01.bmp'>			
+			<mt_use=font uTex1mask_src='/dt/md/rr/us/txt01.bmp'/>
+			<a2mesh wh='7,4.5' xywh='0,48,128,47' all markedAs=body onThe=right px=24 ax=0 detachBy=0.1 />//text
+			<a2mesh wh='7,4.5' xywh='0,48,128,47' all markedAs=body onThe=left px=24 ax=0 detachBy=0.1 />//text
+		</mt_adjust>
+	</group >
+</for_element>
+

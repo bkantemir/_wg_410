@@ -1,0 +1,11 @@
+<include="/dt/mt/materials.txt" />
+
+<group>
+			<mt_use="cabochon" uColor="#aa0000" />
+	<vs="box_tank" whl="7,7,7" ext=5 sectR=2 />
+	<a="front v,back v,right all,left all,top,bottom" />
+		<do="calculate normals" />
+		<do="merge normals" />
+</group>
+
+

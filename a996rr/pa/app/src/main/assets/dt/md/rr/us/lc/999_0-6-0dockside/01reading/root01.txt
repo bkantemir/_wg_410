@@ -1,0 +1,81 @@
+
+<model="0-6-0 H.K.Porter Dockside Switcher" yearFrom=1917 loco/>
+
+<include="/dt/mt/materials.txt" />
+
+<color_as=frame uColor=#404048 />
+<color_as=frame-wire uColor=#606068 />
+<mt_save_as=frame mt_use=metal uColor_use=frame />
+
+<color_as=body uColor=#303038 />
+<color_as=body-wire uColor=#505058 />
+<mt_save_as=body mt_use=tin uColor_use=body />
+
+<mt_save_as=rim mt_use=chrome />
+<mt_save_as="rim-wire" mt_use="metal-wire" lineWidth=1 uColor=#585050 />
+
+<color_as=wheels-color uColor_use=frame/>
+<mt_save_as=wheel_main mt_use=metal uColor_use=wheels-color/>
+<mt_save_as=rim_wall mt_use=rim />
+
+<color_as=gear uColor_use=chrome />
+<mt_save_as=gear mt_use=chrome />
+
+//<color_as=handles uColor=#eebb00 />
+//<mt_save_as=handles mt_use=gloss-wire uColor_use=handles lineWidth=0.3 />
+<color_as=handles uColor=#825A00 />
+<mt_save_as=handles mt_use=gold-wire uColor_use=handles lineWidth=0.3 />
+
+//<color_as=handles uColor=#825A00 />
+//<mt_save_as=handles mt_use=gold-wire lineWidth=0.4 />
+
+<color_as=pipes-wire uColor=#111111 />
+<mt_save_as=pipes-wire mt_use=gloss-wire uColor_use=pipes-wire lineWidth=0.3 />
+
+//<mt_save_as=boiler-mid mt_use=tin uColor=#481E36/>//-maroon//201050 />//-ink
+//<mt_save_as=boiler-domes mt_use=boiler-mid />
+
+<mt_save_as=local-chrome mt_use=chrome />
+<mt_save_as=bell mt_use=roman-gold />
+<mt_save_as=owen mt_use=chrome />
+<mt_save_as=roof mt_use=surik />
+
+<mt_save_as=boiler-front mt_use=silver />//metal uColor=#c8c0cf />
+<color_as=boiler-front uColor=#aaaaaa />
+
+//<color_as=door uColor_use=surik/>//=#00aa00/>
+//<mt_save_as=door mt_use=surik uColor_use=door/>
+<color_as=window uColor_use=surik/>
+<mt_save_as=window mt_use=surik uColor_use=window/>
+
+
+<include='../root00.txt' />
+
+
+<for_element=boiler>
+	//front number plate - small ring
+	<group>
+		<line mt_use=gold-wire lineWidth=0.2 noShadow >
+			<ring whl="3.2,3.2,0" sectR=8 />
+		</line>
+		<vs=cylinder whl="3,3,0" sectR=8 />
+		<a=front mt_type=phong uAmbient=0.6 uTex0_src='n22_01.bmp' xywh_GL='0,0,1,1' />
+	</group pz=24.2 py=17>
+
+	<mt_use=bronze uTex1mask_src='reading02.bmp' uTex1alphaChannelN=0 sticker />
+	<a2mesh wh='14,1.2' xywh='0,44,256,20' all markedAs=boiler-mid onThe=right detachBy=0.05 px=-4 py=17.2 />
+	<a2mesh wh='12,1.5' xywh='61,6,196,32' all markedAs=boiler-mid onThe=right detachBy=0.05 px=-4 py=20.2 />
+	<a2mesh wh='3,2' xywh='0,0,59,41' all markedAs=boiler-mid onThe=right detachBy=0.05 px=-4 py=22.5 />
+	
+	<a2mesh wh='14,1.2' xywh='0,44,256,20' all markedAs=boiler-mid onThe=left detachBy=0.05 px=4 py=17.2 />
+	<a2mesh wh='12,1.5' xywh='61,6,196,32' all markedAs=boiler-mid onThe=left detachBy=0.05 px=4 py=20.2 />
+	<a2mesh wh='3,2' xywh='0,0,59,41' all markedAs=boiler-mid onThe=left detachBy=0.05 px=4 py=22.5 />	
+</for_element>
+
+<for_element=cabin>
+	//number 22
+	<mt_use=bronze uTex1mask_src='n22_01.bmp' uTex1alphaChannelN=0 sticker />
+	<a2mesh wh='5,4' xywh='7,15,53,34' all markedAs=cabin-front onThe=right detachBy=0.05 px=10.5 py=15 />
+	<a2mesh wh='5,4' xywh='7,15,53,34' all markedAs=cabin-front onThe=left detachBy=0.05 px=-10.5 py=15 />
+	
+</for_element>

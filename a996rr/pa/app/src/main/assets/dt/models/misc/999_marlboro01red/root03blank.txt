@@ -1,0 +1,26 @@
+<group>
+	//<texture_as="tx0" src="marlboro03small.png" ckey="#00ff00"/>
+	<mt_type="phong" uColor="#998877" />
+	<vs="box_tank" whl="53,83,21" ext=1 sectR=1 />
+	<a="front v" mark="box_front"/>
+	<a="back v"  mark="box_back"/>
+	<a="right all" mark="box_right"/>
+	<a="left all" mark="box_left"/>
+	<a="top" />
+	<a="bottom" />
+	
+	//clear-film
+	<texture_as="glass" src="/dt/mt/glass01.bmp" />
+	<texture_as="whitenoise2" src="/dt/mt/wn64_blur1.bmp"/>
+	<vs="box_tank" whl="53,83,21" ext=1 sectR=1 />
+	<group>
+		<mt_type="mirror" uAlphaFactor=0.8 uSpecularIntencity=0 uTex0_use="whitenoise2" uTex0translateChannelN=1 uTex3_use="glass" noShadow />
+			<a="front h,back h,right,left" />
+		//<mt_type="mirror" uAlphaFactor=0.8 uSpecularIntencity=0 uTex0_use="whitenoise2" uTex0translateChannelN=1 uTex3_use="glass" uTex2nm_use="tx0" noShadow />
+			<a="top all" xywh2nm="724,420,223,90"/>
+			<a="bottom all" xywh2nm="724,420,223,90" mark="film_bottom"/>
+	</group sizeD="0.2,0.1,0.2" >
+	
+</group py=-11.5 axyz="-90,0,0" >
+
+

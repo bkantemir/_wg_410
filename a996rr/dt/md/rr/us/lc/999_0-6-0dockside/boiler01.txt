@@ -1,0 +1,330 @@
+<texture_as=tx2body src=body01.bmp ckey=#00ff00"/>
+<mt_save_as=body2nm mt_use=body uTex2nm_use=tx2body />
+<mt_save_as=local-chrome mt_use=chrome />
+
+<mt_save_as=bell mt_use=frame />
+
+	//boiler
+<element name=boiler attachTo=frame opaque hit>
+
+	<group>//entire boiler
+		<mt_use=body />
+		<vs=cylinder whl='10,10,10' sectR=15 />
+		
+		<group>//boiler short back
+			<a=wrap l=1 />//uColor=#ff0000/>
+		</group align=front pz=-9 py=1>//boiler short back
+		
+		<group>//boiler front
+			<group>//boiler front back
+				<a=wrap l=3 />
+			</group align=front >//boiler front back
+			<group>//boiler front front
+				<color_as=boiler-front uColor_use=body />
+				<mt_save_as=boiler-front mt_use=body />
+
+				<mt_use=boiler-front >
+					<a=wrap l=7 />
+					<a=front l=7 />
+					//side front rivets ring
+					<line mark=guideline3 mt_type=flat uColor=#ff0000 lineWidth=0.5 dontRender >
+						<ring whl="10.4,10.4,5.5" sectR=12 />
+					</line>
+					<group>
+						<a=bottom box='1,0,1' nm=tx2body xywh2nm='1,0,2,2' noShadow />
+						<clone2line="guideline3" clonesN=25 anglesToo />
+					</group>
+					
+					//outer rivets ring					
+					<line mark=guideline1 mt_type=flat uColor=#ff0000 lineWidth=0.5 dontRender >
+						<ring whl="9,9,7.2" sectR=12 />
+					</line>
+					<group>
+						<a=front box='0.6,0.6,0' nm=tx2body xywh2nm='1,0,2,2' noShadow />
+						<clone2line="guideline1" clonesN=20 />
+					</group>
+					
+					//1st inner ring
+					<line mt_type=phong uColor_use=boiler-front lineWidth=0.3 noShadow >
+						<group>
+							<ring whl="7.8,7.8,7.2" sectR=12 />
+							<do=normalsFrom xyz=0,0,-8 />
+						</group>
+					</line>
+					
+					//center lid
+					<line mt_type=phong uColor_use=boiler-front lineWidth=0.5 noShadow >
+						<group>
+							<ring whl="5,5,7.5" sectR=10 />
+							<do=normalsFrom xyz=0,0,0 />
+						</group>
+					</line>
+					<group>
+						<vs=cap whl='5,5,1' sectR=10 sectZ=2 />
+						<a=front pz=4 />
+						<do='calc merge normals'/>
+					</group>
+					//lid big rivets ring					
+					<line mark=guideline2 mt_type=flat uColor=#ff0000 lineWidth=0.5 dontRender >
+						<ring whl="6,6,7.2" sectR=12 />
+					</line>
+					<group>
+						<a=front box='1,1,0' nm=tx2body xywh2nm='1,0,2,2' noShadow />
+						<clone2line="guideline2" clonesN=10 />
+					</group>
+					<group> //hinges
+						<box='2.5,0.5,0.8'/>
+						<a='front,top,right' />
+					</group align='right back' pxyz='3.5,1.5,3.5'>
+					<clone py=-3 />
+					<element name=pipe attachTo=boiler opaque hit>
+						<group>//entire pipe
+							<group>//base
+								<vs=cylinder whl='1.5,1.5,1' sectR=8 sectZ=2 />
+								<a=wrap />//mt_type=phong uColor=#00ff00 />
+								<do sizeD='1.5,1.5,0' applyTo='back pow2' />								
+							</group headZto=up align=top>//base					
+							<group>//upper pipe
+								<vs=cylinder whl='1.5,1.5,7' sectR=8 />
+								<a=wrap/>
+								<a=front mt_use=black/>
+								//upper ring
+								<line mt_type=wire uColor_use=boiler-front lineWidth=0.4 noShadow >
+									<ring  whl='1.5,1.5,7' sectR=8 pz=0.2/>
+								</line>								
+								<do sizeD='0.5,0.5,0' applyTo=front />
+							</group headZto='0,1,0' align=bottom >//upper pipe	
+							<do py=-0.2 applyTo='sidesX pow2' toY=0 />
+							<do='calc merge normals'/>
+						</group align=bottom py=5 pz=1 >//entire pipe					
+					</element> //pipe
+				</mt_use> //boiler-front
+			</group align=back >//boiler front front
+			//front light
+			<box='3,0.5,2'/> //base
+			<a='top,front l,left l,right l' align=back py=4 pz=7/>
+			<group>//light body
+				<vs=cylinder whl='3,3,2' sectR=10 />
+				<a='wrap,back'/>
+				<line mt_type=wire lineWidth=0.4 noShadow >
+					<ring whl='3.4,3.4,1.6' sectR=10 />
+				</line>
+			</group align=back py=5.5 pz=8>
+			//round handler
+			<group>
+				<mt_use=handles >					
+					<line >
+						<p pxyz='-4.5,0,-1.5' />
+						<p dz=1.5 r=0.5 />
+						<ring whl='9.5,9.5,0' sectR=8 angleFromTo='-180,0' r=0.5 />
+						<p dz=-1.5 />
+					</line>
+					<short p0='0,-4.5,0' dz=-1.5 />					
+				</mt_use>
+			</group pz=8 >
+			//right handles
+			<group>
+				<line mt_use=handles uColor_use=boiler-front >
+					<p pxyz='-0.5,0,-2' />
+					<p dx=1.5 r=0.5 />
+					<p dz=4 r=0.5 />
+					<p dx=-1.5 r=0.5 />
+				</line>
+			</group pxyz='4.8,1,3' az=5>
+			<clone=reflect xyz='1,0,0' />
+			
+		</group align=back pz=8.5 py=1 >//boiler front
+		
+		<group>//boiler fat mid
+			<mt_save_as=boiler-mid mt_use=body />
+			<mt_use=boiler-mid >
+			<vs=box-tank whl='0,4,18' ext=7 extZ=0 extD=0 sectR=4 />
+			<a='front,back' />
+			<a='top all,left,right' mark='boiler-mid'/>
+			//rivets
+			<group>
+				<line mark=guideline mt_type=flat uColor=#ff0000 lineWidth=0.2 dontRender>
+					<p pxyz='7.1,-4,0' />
+					<ring whl='14.2,14.2,0' angleFromTo='0,180' sectR=8 />
+					<p dy=-4 />
+				</line>
+				<group>
+					<a=top box='0.6,0,0.6' nm=tx2body xywh2nm='1,0,2,2' noShadow />
+					<clone2line="guideline" clonesN=22 anglesToo />
+				</group>
+			</group pz=8.5 py=2 >
+			<clone pz=-17 />
+			<clone pz=6 />
+			
+			<group> //right step
+				<mt_use=body />
+				<box='4,0.5,20' />
+				<a='top,right l' />
+				<group> //front sub-step
+					<box='3,3,1' />
+					<a='bottom' side=in />
+					<a='back' side=',' />
+				</group align='top back' pxyz='0.5,0.25,10' > //front sub-step
+			</group px=7 align=top py=-1.5 > //right step
+			<clone="reflect" xyz="1,0,0" />
+			//black under steps
+			<a='left,right,front' box='12,2,18' mt_use=black py=-3 />//uColor=#ff0000/>
+			<group> //right tank
+				<mt_use=body />
+				<vs=cylinder whl='2,2,8' ext=1 angleFromTo='-80,100' sectR=3 />
+				<a='wrap' />
+				<a='front,back' />//uColor=#ff0000/>
+				<do='calc merge normals' />
+				<group>//front ring
+					<line 4wire lineWidth=0.2 >
+						<ring whl="2.2,2.2,0" sectR=6 />
+					</line>
+				</group pz=3>//front ring
+				<clone pz=-6 />
+				//pipe from tank
+				<mt_use=frame 4wire lineWidth=0.3 >//uColor=#ff0000 >
+					<line >
+						<p pxyz='0,0,-5' />
+						<p dz=-0.5 r=0.3/>
+						<p dy=1.3 r=0.3/>						
+						
+						<p dz=-7.5 r=0.3/>
+						<p dy=-1 r=0.3/>
+						<p dz=7 r=0.3/>
+						<p dy=-1 r=0.3/>
+						<p dz=-7 r=0.3/>
+						<p dx=-3 r=0.3/>
+					</line>
+					<short p0='0.3,2,-11' py=-1/>
+				</mt_use>
+			</group pxyz='8,-4,4.5' > //right tank
+			<clone="reflect" xyz="1,0,0" />
+
+			//front handles
+			<group>
+				<mt_use=handles uColor_use=body 4wire >					
+					<line >
+						<p pxyz='5.2,0,0' />
+						<p dz=1 r=0.5 />
+						<p dz=7 dy=-7 r=0.5 />
+						<p dy=-1.5 />
+					</line>
+				</mt_use>
+			</group pz=9 >
+			<clone=reflect xyz='1,0,0' />
+
+			//domes
+			<element name=domes attachTo=boiler opaque hit>
+				<mt_save_as=boiler-domes mt_use=boiler-mid />
+				<mt_use=boiler-domes />
+				<group>//all domes
+					<group>//center dome
+						<vs=cylinder whl='5,5,2' sectR=8 />
+						<group>//top
+							<a=wrap />
+							<a=front vs=cap l=1 sectZ=3 headZto=-z pz=-1/>
+						</group align=front>//top
+						<group>//base
+							<a=wrap l=1 sectZ=3 />
+							<do sizeD='2,1,0' applyTo='front pow2' />
+							<do pz=1 applyTo='sidesX pow2' fromZ=-0.4/>
+						</group align=back >//base
+						<do='calc merge normals'/>
+					</group headZto=-y align=bottom py=8 pz=0.5 >//center dome
+					<element='/dt/md/rr/bell/whistle01right.txt' class=whistle attachTo=boiler pxyz='2,25,4.5' ax=-10 />
+					<group>//front dome
+						<vs=cylinder whl='3,3,2' sectR=8 />
+						<group>//top
+							<a=wrap />
+							<a=front vs=cap l=1 sectZ=3 headZto=-z pz=-1/>
+						</group align=front>//top
+						<group>//base
+							<a=wrap l=1 sectZ=3 />
+							<do sizeD='1.5,1,0' applyTo='front pow2' />
+							<do pz=0.5 applyTo='sidesX pow2' fromZ=-0.4 />
+						</group align=back >//base
+						<do='calc merge normals'/>
+					</group headZto=-y align=bottom py=8 pz=6.5 >//front dome
+					<clone pz=-13/>
+					
+					<group>//T
+						<mt_use=boiler-domes mt_type=wire lineWidth=0.8 />
+						<short p0='0,0,-1' dz=2/>
+						<tip=start />
+						<tip=end />
+						<short p0='0,0,0' dy=-2/>
+					</group py=10 pz=-3.5>//T
+				</group>//all domes
+			</element>
+		
+			//side steps
+			<group>//right steps
+				<group>//front steps
+					<group>//lower step
+						<box='1.5,1,2.5'/>
+						<a=top,right/>
+						<a='front,back' side=','/>
+						<do py=0.8 applyTo='bottom right only'/>
+					</group pxyz='7.3,3,5.3 >//lower step
+					<clone pxyz='-1.1,3,-1'/>
+				</group>//front steps
+				<clone=reflect xyz='0,0,1'/>
+			</group>//right steps
+			<clone=reflect xyz='1,0,0'/>
+			
+		</group >//boiler fat mid
+		
+		<group>//pipes
+			<group mark=for_pipes >
+				<mt_type=phong uColor=#ff0000 dontRender >
+					<vs=box-tank whl='0,20,40' ext=7.2 extZ=0 extD=0 sectR=6 />
+					<a='right v' />
+				</mt_type>
+			</group py=-10 pz=-5 >
+			<group>
+				<mt_use=handles uColor_use=body 4wire >	
+					<line>
+						<p pxyz='-6.5,7.2,0' />
+						<p dy=-3 dx=0.5 r=1 />
+						<p pxyz='-8.5,-7,0'/>
+					</line>
+					<line2mesh all markedAs=for_pipes onThe=right />
+					
+					<line >//uColor=#ff0000>
+						<p pxyz='6.5,7.2,0' />
+						<p dy=-3 dx=-0.5 r=1 />
+						<p pxyz='9,-7,0' r=1 />
+						<p dx=9.5 r=1/>
+						<p dy=-9 r=2/>
+						<p dx=8 dy=-1/>
+					</line>
+					<line2mesh all markedAs=for_pipes onThe=right />
+				</mt_use>
+			</group >
+		</group py=2>//pipes
+		<clone="reflect" xyz="1,0,0" />
+		
+		<group>//handles
+			<mt_use=handles >
+				<line mark=handle >
+					<p pxyz='5.3,6.3,-10' />
+					<p dz=20 r=0.8/>
+					<p dy=-8 dx=1.5 r=0.5/>
+					<p dz=-1/>
+				</line>
+				
+				<group>
+					<short p0='0,0,0' dx=-1 dy=-1 />
+					<mt_use=local-chrome>
+						<include='/dt/md/ball1.txt' scale=0.7/>
+					</mt_use>
+					<clone2line=handle clonesN=4 fromL=2.5 interval=5 />
+				</group>
+			</mt_use>
+		</group py=2>//handles
+		<clone="reflect" xyz="1,0,0" />
+		
+	</group py=16 pz=4 >//entire boiler
+	
+</element>
+
